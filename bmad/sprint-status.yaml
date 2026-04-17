@@ -35,7 +35,7 @@ epics:
     story_ids:
       - STORY-005
     target_sprint: 1
-    progress_percentage: 0
+    progress_percentage: 100
 stories:
   - id: STORY-001
     title: Estruturar o esqueleto modular em laravel/app/Modules
@@ -81,10 +81,11 @@ stories:
     epic: Estrutura financeira inicial
     priority: Should Have
     points: 2
-    status: not_started
+    status: completed
     dependencies:
       - STORY-004
     notes: Preparar a primeira estrutura financeira do sistema
+    completed_date: "2026-04-17"
 burndown:
   - date: "2026-04-17"
     completed_points: 0
@@ -113,10 +114,10 @@ burndown:
     notes: Sprint concluida
 metrics:
   total_stories: 5
-  completed_stories: 4
+  completed_stories: 5
   in_progress_stories: 0
   blocked_stories: 0
   total_points: 20
-  completed_points: 18
-  completion_percentage: 90
-last_updated: "2026-04-17T12:22:00Z"
+  completed_points: 20
+  completion_percentage: 100
+last_updated: "2026-04-17T12:25:08Z"

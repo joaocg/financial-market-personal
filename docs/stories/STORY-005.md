@@ -4,7 +4,7 @@
 - **Epic:** Estrutura financeira inicial
 - **Priority:** Should Have
 - **Story Points:** 2
-- **Status:** Not Started
+- **Status:** Completed
 
 ## User Story
 
@@ -14,11 +14,11 @@ So that **a familia tenha a estrutura minima para registrar movimentacoes nas pr
 
 ## Acceptance Criteria
 
-- [ ] **Criterion 1:** Existe endpoint autenticado para cadastrar banco no contexto da familia.
-- [ ] **Criterion 2:** Existe endpoint autenticado para cadastrar conta vinculada a um banco e a uma familia.
-- [ ] **Criterion 3:** O cadastro da conta aceita saldo inicial, incluindo valor zero.
-- [ ] **Criterion 4:** A conta e o banco ficam escopados corretamente pela familia autenticada.
-- [ ] **Criterion 5:** O retorno da API apresenta os dados minimos necessarios para uso posterior no ledger.
+- [x] **Criterion 1:** Existe endpoint autenticado para cadastrar banco no contexto da familia.
+- [x] **Criterion 2:** Existe endpoint autenticado para cadastrar conta vinculada a um banco e a uma familia.
+- [x] **Criterion 3:** O cadastro da conta aceita saldo inicial, incluindo valor zero.
+- [x] **Criterion 4:** A conta e o banco ficam escopados corretamente pela familia autenticada.
+- [x] **Criterion 5:** O retorno da API apresenta os dados minimos necessarios para uso posterior no ledger.
 
 ## Technical Notes
 
@@ -75,8 +75,8 @@ Baixa complexidade; usar indices basicos por `family_id` e `status` desde o inic
 
 ### Open Questions
 
-- [ ] O banco sera entidade livre por familia ou havera catalogo compartilhado no futuro?
-- [ ] O saldo inicial sera persistido apenas em `bank_accounts` ou em uma entidade especifica de abertura?
+- [x] O banco sera entidade livre por familia ou havera catalogo compartilhado no futuro?
+- [x] O saldo inicial sera persistido apenas em `bank_accounts` ou em uma entidade especifica de abertura?
 
 ## Testing Requirements
 
@@ -115,4 +115,4 @@ This story is considered complete when:
 
 ## Notes
 
-Esta story foi mantida em 2 pontos de proposito: entregar somente o cadastro minimo da estrutura financeira. Historico detalhado, saldo consolidado e operacoes de ledger ficam para historias seguintes.
+Implementacao concluida com `POST /api/v1/banks` e `POST /api/v1/accounts`, entidades `Bank` e `BankAccount`, migrations de `banks` e `bank_accounts`, validacao de saldo inicial incluindo zero e checagem de escopo por familia autenticada.
