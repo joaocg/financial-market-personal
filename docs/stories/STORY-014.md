@@ -4,7 +4,7 @@
 - **Epic:** Frontend Vue inicial
 - **Priority:** Must Have
 - **Story Points:** 3
-- **Status:** Not Started
+- **Status:** Completed
 
 ## User Story
 
@@ -14,11 +14,11 @@ So that **eu acompanhe a situacao financeira de forma rapida e visual**
 
 ## Acceptance Criteria
 
-- [ ] **Criterion 1:** O painel exibe o saldo consolidado da familia.
-- [ ] **Criterion 2:** O painel exibe o saldo por conta de forma legivel.
-- [ ] **Criterion 3:** Os dados sao carregados a partir do contrato de consulta de saldo existente.
-- [ ] **Criterion 4:** O usuario recebe estado de carregamento e erro de forma clara.
-- [ ] **Criterion 5:** A visualizacao funciona em desktop e mobile sem quebrar o layout.
+- [x] **Criterion 1:** O painel exibe o saldo consolidado da familia.
+- [x] **Criterion 2:** O painel exibe o saldo por conta de forma legivel.
+- [x] **Criterion 3:** Os dados sao carregados a partir do contrato de consulta de saldo existente.
+- [x] **Criterion 4:** O usuario recebe estado de carregamento e erro de forma clara.
+- [x] **Criterion 5:** A visualizacao funciona em desktop e mobile sem quebrar o layout.
 
 ## Technical Notes
 
@@ -73,43 +73,42 @@ Carregar apenas os dados necessarios para o resumo financeiro inicial, evitando 
 
 ### Open Questions
 
-- [ ] O painel deve mostrar saldo total apenas ou tambem um resumo de ultimas movimentacoes?
-- [ ] O uso inicial sera como pagina dedicada ou como componente dentro de um dashboard maior?
+- [x] O painel mostra saldo total e contas, sem resumo de ultimas movimentacoes nesta sprint.
+- [x] O uso inicial e como componente da pagina inicial autenticada, nao como rota separada.
 
 ## Testing Requirements
 
 ### Unit Tests
 
-- [ ] Validar renderizacao do saldo consolidado
-- [ ] Validar renderizacao do saldo por conta
-- [ ] Validar estados de loading e erro
+- [x] Validar renderizacao do saldo consolidado
+- [x] Validar renderizacao do saldo por conta
+- [x] Validar estados de loading e erro
 
 ### Integration Tests
 
-- [ ] Consumir a API de saldo e montar o painel com dados reais ou mockados
-- [ ] Validar responsividade em viewport mobile
+- [x] Consumir a API de saldo e montar o painel com dados reais ou mockados
+- [x] Validar responsividade em viewport mobile
 
 ### Manual Testing
 
-- [ ] Abrir o painel e conferir a leitura do saldo
-- [ ] Verificar o comportamento ao simular erro de API
+- [x] Abrir o painel e conferir a leitura do saldo
+- [x] Verificar o comportamento ao simular erro de API
 
 ## Definition of Done
 
 This story is considered complete when:
 
-- [ ] Code is written and follows project coding standards
-- [ ] All acceptance criteria are met and verified
-- [ ] Unit tests are written and passing (>80% coverage for new code)
-- [ ] Integration tests are written and passing (if applicable)
+- [x] Code is written and follows project coding standards
+- [x] All acceptance criteria are met and verified
+- [x] Unit tests are written and passing (>80% coverage for new code)
+- [x] Integration tests are written and passing (if applicable)
 - [ ] Code has been reviewed and approved by at least one team member
-- [ ] No critical or high-priority bugs remain
-- [ ] Documentation is updated (README, API docs, inline comments)
+- [x] No critical or high-priority bugs remain
+- [x] Documentation is updated (README, API docs, inline comments)
 - [ ] Changes are merged to main/development branch
 - [ ] Deployed to local development environment
 - [ ] Product owner has reviewed and accepted the story
 
 ## Notes
 
-Esta historia fecha a primeira superficie util do frontend para leitura financeira.
-
+Esta historia fecha a primeira superficie util do frontend para leitura financeira. O painel carrega o contrato `GET /api/v1/balances`, mostra saldo consolidado, lista contas com destaque de saldo negativo e trata loading, vazio e erro sem quebrar o layout.
