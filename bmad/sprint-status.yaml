@@ -23,7 +23,7 @@ epics:
       - STORY-011
       - STORY-012
     target_sprint: 3
-    progress_percentage: 0
+    progress_percentage: 50
   - name: Frontend Vue inicial
     total_points: 8
     story_ids:
@@ -37,11 +37,12 @@ stories:
     epic: Fluxo guiado WhatsApp
     priority: Must Have
     points: 5
-    status: not_started
+    status: completed
     dependencies:
       - STORY-009
       - STORY-006
     notes: Registrar despesas com conversa guiada e confirmacao antes de persistir.
+    completed_date: "2026-04-17"
   - id: STORY-012
     title: Fluxo guiado de registro de credito via WhatsApp
     epic: Fluxo guiado WhatsApp
@@ -78,10 +79,10 @@ stretch_backlog:
     note: Mantida fora do compromisso da sprint por capacidade.
 metrics:
   total_stories: 4
-  completed_stories: 0
+  completed_stories: 1
   in_progress_stories: 0
   blocked_stories: 0
   total_points: 18
-  completed_points: 0
-  completion_percentage: 0
-last_updated: "2026-04-17T17:26:05Z"
+  completed_points: 5
+  completion_percentage: 25
+last_updated: "2026-04-17T17:43:13Z"

@@ -4,7 +4,7 @@
 - **Epic:** Fluxo guiado WhatsApp
 - **Priority:** Must Have
 - **Story Points:** 5
-- **Status:** Not Started
+- **Status:** Completed
 
 ## User Story
 
@@ -14,11 +14,11 @@ So that **eu consiga lancar gastos sem abrir o painel web**
 
 ## Acceptance Criteria
 
-- [ ] **Criterion 1:** O sistema identifica a intencao de registrar despesa a partir do evento recebido pelo webhook.
-- [ ] **Criterion 2:** O fluxo solicita os dados minimos da despesa antes de persistir qualquer lancamento.
-- [ ] **Criterion 3:** O sistema confirma valor, descricao e conta antes de concluir o registro.
-- [ ] **Criterion 4:** O lancamento eh persistido com impacto correto no saldo da conta e da familia.
-- [ ] **Criterion 5:** Respostas para entradas invalidas, incompletas ou nao autorizadas sao seguras e controladas.
+- [x] **Criterion 1:** O sistema identifica a intencao de registrar despesa a partir do evento recebido pelo webhook.
+- [x] **Criterion 2:** O fluxo solicita os dados minimos da despesa antes de persistir qualquer lancamento.
+- [x] **Criterion 3:** O sistema confirma valor, descricao e conta antes de concluir o registro.
+- [x] **Criterion 4:** O lancamento eh persistido com impacto correto no saldo da conta e da familia.
+- [x] **Criterion 5:** Respostas para entradas invalidas, incompletas ou nao autorizadas sao seguras e controladas.
 
 ## Technical Notes
 
@@ -82,19 +82,19 @@ O fluxo deve manter baixa latencia, porque a interacao depende de resposta rapid
 
 ### Unit Tests
 
-- [ ] Validar deteccao da intencao de despesa
-- [ ] Validar transicoes de estado do fluxo guiado
-- [ ] Validar montagem da mensagem de confirmacao
+- [x] Validar deteccao da intencao de despesa
+- [x] Validar transicoes de estado do fluxo guiado
+- [x] Validar montagem da mensagem de confirmacao
 
 ### Integration Tests
 
-- [ ] Receber mensagem inicial de despesa e seguir para coleta guiada
-- [ ] Confirmar uma despesa e verificar o impacto no saldo
+- [x] Receber mensagem inicial de despesa e seguir para coleta guiada
+- [x] Confirmar uma despesa e verificar o impacto no saldo
 
 ### Manual Testing
 
-- [ ] Enviar uma mensagem de despesa a partir de contato autorizado
-- [ ] Confirmar a despesa e verificar a persistencia final
+- [x] Enviar uma mensagem de despesa a partir de contato autorizado
+- [x] Confirmar a despesa e verificar a persistencia final
 
 ## Definition of Done
 
@@ -113,5 +113,4 @@ This story is considered complete when:
 
 ## Notes
 
-Primeira parte do fluxo guiado do WhatsApp para lancamentos. O foco e reduzir friccao sem comprometer a validacao do ledger.
-
+Implementacao concluida com `conversation_sessions` duravel para o fluxo WhatsApp, novo detector de intent para `despesa`, orquestracao guiada em `HandleExpenseConversationAction` e persistencia de lancamento via `RecordTransactionAction`. A lista de contas vem ordenada pelo contrato de saldo existente e a confirmacao final grava a despesa com atualizacao atomica do saldo.
