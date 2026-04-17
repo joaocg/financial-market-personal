@@ -30,7 +30,7 @@ epics:
       - STORY-013
       - STORY-014
     target_sprint: 3
-    progress_percentage: 0
+    progress_percentage: 63
 stories:
   - id: STORY-011
     title: Fluxo guiado de registro de despesa via WhatsApp
@@ -59,9 +59,10 @@ stories:
     epic: Frontend Vue inicial
     priority: Must Have
     points: 5
-    status: not_started
+    status: completed
     dependencies: []
     notes: Preparar entrada visual para o frontend do MVP.
+    completed_date: "2026-04-17"
   - id: STORY-014
     title: Painel Vue para saldo consolidado e contas
     epic: Frontend Vue inicial
@@ -80,10 +81,10 @@ stretch_backlog:
     note: Mantida fora do compromisso da sprint por capacidade.
 metrics:
   total_stories: 4
-  completed_stories: 2
+  completed_stories: 3
   in_progress_stories: 0
   blocked_stories: 0
   total_points: 18
-  completed_points: 10
-  completion_percentage: 50
-last_updated: "2026-04-17T17:48:11Z"
+  completed_points: 15
+  completion_percentage: 83
+last_updated: "2026-04-17T17:56:22Z"

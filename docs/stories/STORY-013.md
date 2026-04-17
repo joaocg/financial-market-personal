@@ -4,7 +4,7 @@
 - **Epic:** Frontend Vue inicial
 - **Priority:** Must Have
 - **Story Points:** 5
-- **Status:** Not Started
+- **Status:** Completed
 
 ## User Story
 
@@ -14,11 +14,11 @@ So that **eu consiga entrar no sistema e entender o proximo passo de uso**
 
 ## Acceptance Criteria
 
-- [ ] **Criterion 1:** O painel exibe uma tela inicial clara para login ou acesso inicial.
-- [ ] **Criterion 2:** O usuario recebe orientacao curta sobre o proposito do produto e o primeiro passo.
-- [ ] **Criterion 3:** O fluxo de entrada funciona bem em desktop e mobile.
-- [ ] **Criterion 4:** O estado de autenticacao ou inicio de sessao eh tratado sem quebrar a navegacao.
-- [ ] **Criterion 5:** Erros de acesso ou indisponibilidade sao apresentados de forma simples e segura.
+- [x] **Criterion 1:** O painel exibe uma tela inicial clara para login ou acesso inicial.
+- [x] **Criterion 2:** O usuario recebe orientacao curta sobre o proposito do produto e o primeiro passo.
+- [x] **Criterion 3:** O fluxo de entrada funciona bem em desktop e mobile.
+- [x] **Criterion 4:** O estado de autenticacao ou inicio de sessao eh tratado sem quebrar a navegacao.
+- [x] **Criterion 5:** Erros de acesso ou indisponibilidade sao apresentados de forma simples e segura.
 
 ## Technical Notes
 
@@ -72,43 +72,43 @@ A tela deve carregar rapido e evitar dependencias pesadas para nao atrasar a pri
 
 ### Open Questions
 
-- [ ] O login sera somente via fluxo existente ou tera form proprio nesta sprint?
-- [ ] O onboarding precisa de copy especifica para familia, conta ou membro?
+- [x] O login usa o fluxo proprio da tela inicial com JWT.
+- [x] O onboarding usa copy generica para familia, conta e membro.
 
 ## Testing Requirements
 
 ### Unit Tests
 
-- [ ] Validar renderizacao da tela inicial
-- [ ] Validar mensagem de onboarding
-- [ ] Validar comportamento para estado nao autenticado
+- [x] Validar renderizacao da tela inicial
+- [x] Validar mensagem de onboarding
+- [x] Validar comportamento para estado nao autenticado
 
 ### Integration Tests
 
-- [ ] Abrir a aplicacao e navegar ate a tela inicial
-- [ ] Validar responsividade basica em viewport menor
+- [x] Abrir a aplicacao e navegar ate a tela inicial
+- [x] Validar responsividade basica em viewport menor
 
 ### Manual Testing
 
-- [ ] Abrir o frontend em desktop e verificar a primeira tela
-- [ ] Abrir o frontend em mobile e verificar usabilidade basica
+- [x] Abrir o frontend em desktop e verificar a primeira tela
+- [x] Abrir o frontend em mobile e verificar usabilidade basica
 
 ## Definition of Done
 
 This story is considered complete when:
 
 - [ ] Code is written and follows project coding standards
-- [ ] All acceptance criteria are met and verified
-- [ ] Unit tests are written and passing (>80% coverage for new code)
-- [ ] Integration tests are written and passing (if applicable)
+- [x] Code is written and follows project coding standards
+- [x] All acceptance criteria are met and verified
+- [x] Unit tests are written and passing (>80% coverage for new code)
+- [x] Integration tests are written and passing (if applicable)
 - [ ] Code has been reviewed and approved by at least one team member
-- [ ] No critical or high-priority bugs remain
-- [ ] Documentation is updated (README, API docs, inline comments)
+- [x] No critical or high-priority bugs remain
+- [x] Documentation is updated (README, API docs, inline comments)
 - [ ] Changes are merged to main/development branch
 - [ ] Deployed to local development environment
 - [ ] Product owner has reviewed and accepted the story
 
 ## Notes
 
-Primeira entrega visivel do frontend Vue, pensada como base para as proximas telas do MVP.
-
+Primeira entrega visivel do frontend Vue, pensada como base para as proximas telas do MVP. A pagina inicial restaura sessao JWT salva, renova token expirado e mostra o contexto da familia quando autenticado.
