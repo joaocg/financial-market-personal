@@ -4,7 +4,7 @@
 - **Epic:** Identidade e onboarding da familia
 - **Priority:** Must Have
 - **Story Points:** 5
-- **Status:** Not Started
+- **Status:** Completed
 
 ## User Story
 
@@ -14,11 +14,11 @@ So that **as APIs protegidas respeitem meu acesso e o isolamento dos dados**
 
 ## Acceptance Criteria
 
-- [ ] **Criterion 1:** Existe endpoint de login que autentica o usuario e retorna access token JWT.
-- [ ] **Criterion 2:** Existe estrategia de refresh ou renovacao minima definida e implementada para a primeira iteracao.
-- [ ] **Criterion 3:** Endpoints protegidos rejeitam token ausente, invalido ou expirado com resposta apropriada.
-- [ ] **Criterion 4:** O backend resolve o membership do usuario e aplica escopo por familia nas operacoes autenticadas.
-- [ ] **Criterion 5:** O mecanismo adotado e documentado com variaveis de ambiente e fluxo de autenticacao.
+- [x] **Criterion 1:** Existe endpoint de login que autentica o usuario e retorna access token JWT.
+- [x] **Criterion 2:** Existe estrategia de refresh ou renovacao minima definida e implementada para a primeira iteracao.
+- [x] **Criterion 3:** Endpoints protegidos rejeitam token ausente, invalido ou expirado com resposta apropriada.
+- [x] **Criterion 4:** O backend resolve o membership do usuario e aplica escopo por familia nas operacoes autenticadas.
+- [x] **Criterion 5:** O mecanismo adotado e documentado com variaveis de ambiente e fluxo de autenticacao.
 
 ## Technical Notes
 
@@ -77,8 +77,8 @@ Evitar consultas redundantes para resolver contexto de familia em toda request; 
 
 ### Open Questions
 
-- [ ] Qual biblioteca JWT sera adotada no Laravel 13?
-- [ ] O refresh token sera persistido em banco, Redis ou tratado de forma estateless?
+- [x] Qual biblioteca JWT sera adotada no Laravel 13?
+- [x] O refresh token sera persistido em banco, Redis ou tratado de forma estateless?
 
 ## Testing Requirements
 
@@ -117,4 +117,4 @@ This story is considered complete when:
 
 ## Notes
 
-A historia deve limitar a primeira entrega a autenticacao backend e escopo por familia. Interface visual de login pode ficar para etapa de frontend desacoplado, se ainda nao estiver no escopo tecnico desta sprint.
+Implementacao concluida com JWT HS256 minimo dentro do modulo `Identity`, refresh token stateless, middleware `jwt.auth`, middleware `family.context`, endpoint protegido `GET /api/v1/auth/me`, configuracao em `config/auth-jwt.php` e documentacao no `README`. Tambem foram adicionadas as migrations base de `families` e `family_memberships` para suportar o contexto da proxima historia.

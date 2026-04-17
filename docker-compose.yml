@@ -106,7 +106,11 @@ services:
       retries: 10
 
   waha:
-    image: devlikeapro/waha:latest
+    # Build locally because the published `devlikeapro/waha:latest`
+    # image does not provide a `linux/arm64/v8` manifest.
+    build:
+      context: ./waha
+    image: financeiro-waha:local
     dns:
       - 1.1.1.1
       - 8.8.8.8
