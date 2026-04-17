@@ -4,7 +4,7 @@
 - **Epic:** Motor financeiro basico
 - **Priority:** Must Have
 - **Story Points:** 3
-- **Status:** Not Started
+- **Status:** Completed
 
 ## User Story
 
@@ -14,11 +14,11 @@ So that **eu tenha visibilidade rapida da situacao financeira atual**
 
 ## Acceptance Criteria
 
-- [ ] **Criterion 1:** Existe endpoint autenticado para retornar o saldo consolidado da familia.
-- [ ] **Criterion 2:** O payload inclui lista de contas com saldo individual e identificacao minima.
-- [ ] **Criterion 3:** O endpoint respeita o escopo de `family_id` do usuario autenticado.
-- [ ] **Criterion 4:** A resposta informa referencia temporal minima de atualizacao ou calculo.
-- [ ] **Criterion 5:** O contrato retornado e simples o suficiente para reutilizacao posterior no frontend Vue e no modulo de mensagens.
+- [x] **Criterion 1:** Existe endpoint autenticado para retornar o saldo consolidado da familia.
+- [x] **Criterion 2:** O payload inclui lista de contas com saldo individual e identificacao minima.
+- [x] **Criterion 3:** O endpoint respeita o escopo de `family_id` do usuario autenticado.
+- [x] **Criterion 4:** A resposta informa referencia temporal minima de atualizacao ou calculo.
+- [x] **Criterion 5:** O contrato retornado e simples o suficiente para reutilizacao posterior no frontend Vue e no modulo de mensagens.
 
 ## Technical Notes
 
@@ -73,8 +73,8 @@ Evitar recomputar saldo a partir de todas as transacoes nesta historia; prioriza
 
 ### Open Questions
 
-- [ ] O payload inicial deve incluir apenas contas ativas ou tambem contas inativas com identificacao de status?
-- [ ] A referencia temporal sera `generated_at` da resposta ou `last_transaction_at` derivado do ledger?
+- [x] O payload inicial deve incluir apenas contas ativas ou tambem contas inativas com identificacao de status?
+- [x] A referencia temporal sera `generated_at` da resposta ou `last_transaction_at` derivado do ledger?
 
 ## Testing Requirements
 
@@ -113,4 +113,4 @@ This story is considered complete when:
 
 ## Notes
 
-Esta historia cobre principalmente `FR-008` e prepara o contrato de saldo que sera consumido imediatamente em `STORY-010`.
+Implementacao concluida com query service `GetBalancesAction`, controller `GetBalancesController`, rota `GET /api/v1/balances` e documentacao no `README`. O contrato retorna `family_id`, `total_balance`, `generated_at` e lista de contas com `last_transaction_at`, e os testes `LedgerBalanceTest`, `LedgerTransactionTest` e `BankingSetupTest` passaram no container.

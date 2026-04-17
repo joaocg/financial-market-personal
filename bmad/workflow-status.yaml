@@ -5,7 +5,7 @@ project:
   name: "Financeiro"
   level: 2
   initialized: "2026-04-17T11:03:47Z"
-  last_updated: "2026-04-17T12:59:33Z"
+  last_updated: "2026-04-17T13:03:02Z"
 current_phase: 4
 current_workflow: null
 phases:
@@ -72,7 +72,7 @@ phases:
         completed_at: "2026-04-17T12:39:47Z"
       stories:
         total: 10
-        completed: 6
+        completed: 7
         in_progress: 0
         story_list:
           - STORY-001
@@ -90,4 +90,4 @@ metrics:
   completed_workflows: 4
   progress_percentage: 40
   estimated_stories: 10
-  completed_stories: 6
+  completed_stories: 7

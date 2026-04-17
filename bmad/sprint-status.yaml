@@ -22,7 +22,7 @@ epics:
       - STORY-007
       - STORY-008
     target_sprint: 2
-    progress_percentage: 50
+    progress_percentage: 80
   - name: WhatsApp operacional inicial
     total_points: 10
     story_ids:
@@ -46,10 +46,11 @@ stories:
     epic: Motor financeiro basico
     priority: Must Have
     points: 3
-    status: not_started
+    status: completed
     dependencies:
       - STORY-006
     notes: Disponibilizar saldo total da familia e saldo por conta via API
+    completed_date: "2026-04-17"
   - id: STORY-008
     title: Registrar historico e auditoria basica de lancamentos
     epic: Motor financeiro basico
@@ -111,10 +112,10 @@ burndown:
     notes: Sprint concluida
 metrics:
   total_stories: 5
-  completed_stories: 1
+  completed_stories: 2
   in_progress_stories: 0
   blocked_stories: 0
   total_points: 20
-  completed_points: 5
-  completion_percentage: 25
-last_updated: "2026-04-17T12:59:33Z"
+  completed_points: 8
+  completion_percentage: 40
+last_updated: "2026-04-17T13:03:02Z"
