@@ -29,7 +29,7 @@ epics:
       - STORY-009
       - STORY-010
     target_sprint: 2
-    progress_percentage: 0
+    progress_percentage: 100
 stories:
   - id: STORY-006
     title: Implementar motor de lancamentos manuais de despesa e receita
@@ -66,20 +66,22 @@ stories:
     epic: WhatsApp operacional inicial
     priority: Must Have
     points: 5
-    status: not_started
+    status: completed
     dependencies:
       - STORY-004
     notes: Persistir evento bruto, validar segredo e resolver membro autorizado
+    completed_date: "2026-04-17"
   - id: STORY-010
     title: Entregar consulta de saldo via WhatsApp
     epic: WhatsApp operacional inicial
     priority: Must Have
     points: 5
-    status: not_started
+    status: completed
     dependencies:
       - STORY-007
       - STORY-009
     notes: Interpretar intencao de saldo e responder pelo canal WhatsApp
+    completed_date: "2026-04-17"
 burndown:
   - date: "2026-05-04"
     completed_points: 0
@@ -113,10 +115,10 @@ burndown:
     notes: Sprint concluida
 metrics:
   total_stories: 5
-  completed_stories: 3
+  completed_stories: 5
   in_progress_stories: 0
   blocked_stories: 0
   total_points: 20
-  completed_points: 10
-  completion_percentage: 50
-last_updated: "2026-04-17T13:06:08Z"
+  completed_points: 20
+  completion_percentage: 100
+last_updated: "2026-04-17T17:12:43Z"

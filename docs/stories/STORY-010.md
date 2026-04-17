@@ -4,7 +4,7 @@
 - **Epic:** WhatsApp operacional inicial
 - **Priority:** Must Have
 - **Story Points:** 5
-- **Status:** Not Started
+- **Status:** Completed
 
 ## User Story
 
@@ -14,11 +14,11 @@ So that **eu obtenha uma resposta rapida sem precisar abrir o painel web**
 
 ## Acceptance Criteria
 
-- [ ] **Criterion 1:** O sistema interpreta a intencao basica de consulta de saldo a partir do evento recebido pelo webhook.
-- [ ] **Criterion 2:** O sistema resolve o idioma e o contexto do membro autenticado pelo contato.
-- [ ] **Criterion 3:** O backend consulta o saldo consolidado ou por conta usando o contrato criado em `STORY-007`.
-- [ ] **Criterion 4:** O sistema responde pelo fluxo de mensagens com texto simples e informacao de referencia temporal.
-- [ ] **Criterion 5:** Eventos nao autorizados, ambiguos ou sem saldo disponivel retornam resposta segura e controlada.
+- [x] **Criterion 1:** O sistema interpreta a intencao basica de consulta de saldo a partir do evento recebido pelo webhook.
+- [x] **Criterion 2:** O sistema resolve o idioma e o contexto do membro autenticado pelo contato.
+- [x] **Criterion 3:** O backend consulta o saldo consolidado ou por conta usando o contrato criado em `STORY-007`.
+- [x] **Criterion 4:** O sistema responde pelo fluxo de mensagens com texto simples e informacao de referencia temporal.
+- [x] **Criterion 5:** Eventos nao autorizados, ambiguos ou sem saldo disponivel retornam resposta segura e controlada.
 
 ## Technical Notes
 
@@ -82,21 +82,21 @@ O fluxo deve reaproveitar o resumo de saldo existente e evitar qualquer computac
 
 ### Unit Tests
 
-- [ ] Validar parser de intencao para consulta de saldo
-- [ ] Validar composicao da mensagem de resposta
-- [ ] Validar tratamento de membro nao autorizado
+- [x] Validar parser de intencao para consulta de saldo
+- [x] Validar composicao da mensagem de resposta
+- [x] Validar tratamento de membro nao autorizado
 
 ### Integration Tests
 
-- [ ] Receber webhook com intencao de saldo e disparar resposta correta
-- [ ] Consultar saldo de membro autorizado com familia valida
-- [ ] Receber mensagem invalida ou ambigua e retornar resposta controlada
+- [x] Receber webhook com intencao de saldo e disparar resposta correta
+- [x] Consultar saldo de membro autorizado com familia valida
+- [x] Receber mensagem invalida ou ambigua e retornar resposta controlada
 
 ### Manual Testing
 
-- [ ] Enviar mensagem de saldo a partir de contato autorizado
-- [ ] Validar idioma e contexto da resposta
-- [ ] Conferir comportamento quando nao houver contas ou movimentacoes
+- [x] Enviar mensagem de saldo a partir de contato autorizado
+- [x] Validar idioma e contexto da resposta
+- [x] Conferir comportamento quando nao houver contas ou movimentacoes
 
 ## Definition of Done
 

@@ -4,7 +4,7 @@
 - **Epic:** WhatsApp operacional inicial
 - **Priority:** Must Have
 - **Story Points:** 5
-- **Status:** Not Started
+- **Status:** Completed
 
 ## User Story
 
@@ -14,11 +14,11 @@ So that **o canal WhatsApp possa iniciar fluxos validos sem duplicidade nem aces
 
 ## Acceptance Criteria
 
-- [ ] **Criterion 1:** Existe endpoint de webhook para eventos WAHA no backend Laravel.
-- [ ] **Criterion 2:** O endpoint valida segredo compartilhado ou mecanismo equivalente de autenticacao.
-- [ ] **Criterion 3:** Eventos recebidos sao persistidos de forma bruta para auditoria e reprocessamento.
-- [ ] **Criterion 4:** O processamento garante idempotencia por identificador externo do evento ou mensagem.
-- [ ] **Criterion 5:** O backend resolve o contato recebido para um membro ativo e marca eventos nao autorizados quando nao houver vinculo valido.
+- [x] **Criterion 1:** Existe endpoint de webhook para eventos WAHA no backend Laravel.
+- [x] **Criterion 2:** O endpoint valida segredo compartilhado ou mecanismo equivalente de autenticacao.
+- [x] **Criterion 3:** Eventos recebidos sao persistidos de forma bruta para auditoria e reprocessamento.
+- [x] **Criterion 4:** O processamento garante idempotencia por identificador externo do evento ou mensagem.
+- [x] **Criterion 5:** O backend resolve o contato recebido para um membro ativo e marca eventos nao autorizados quando nao houver vinculo valido.
 
 ## Technical Notes
 
@@ -82,21 +82,21 @@ O endpoint deve responder rapido, preferencialmente com `202 Accepted`, deixando
 
 ### Unit Tests
 
-- [ ] Validar normalizacao do telefone de origem
-- [ ] Validar reconhecimento de evento duplicado
-- [ ] Validar resolucao de contato autorizado
+- [x] Validar normalizacao do telefone de origem
+- [x] Validar reconhecimento de evento duplicado
+- [x] Validar resolucao de contato autorizado
 
 ### Integration Tests
 
-- [ ] Enviar webhook valido e confirmar persistencia do evento bruto
-- [ ] Enviar webhook duplicado e confirmar comportamento idempotente
-- [ ] Enviar webhook sem autenticacao valida e receber erro apropriado
+- [x] Enviar webhook valido e confirmar persistencia do evento bruto
+- [x] Enviar webhook duplicado e confirmar comportamento idempotente
+- [x] Enviar webhook sem autenticacao valida e receber erro apropriado
 
 ### Manual Testing
 
-- [ ] Simular mensagem de contato autorizado
-- [ ] Simular mensagem de contato nao autorizado
-- [ ] Inspecionar payload persistido para reprocessamento futuro
+- [x] Simular mensagem de contato autorizado
+- [x] Simular mensagem de contato nao autorizado
+- [x] Inspecionar payload persistido para reprocessamento futuro
 
 ## Definition of Done
 
