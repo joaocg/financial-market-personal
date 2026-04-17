@@ -22,7 +22,7 @@ epics:
       - STORY-007
       - STORY-008
     target_sprint: 2
-    progress_percentage: 80
+    progress_percentage: 100
   - name: WhatsApp operacional inicial
     total_points: 10
     story_ids:
@@ -56,10 +56,11 @@ stories:
     epic: Motor financeiro basico
     priority: Should Have
     points: 2
-    status: not_started
+    status: completed
     dependencies:
       - STORY-006
     notes: Persistir trilha minima de auditoria para operacoes financeiras
+    completed_date: "2026-04-17"
   - id: STORY-009
     title: Receber webhook WAHA com idempotencia e autorizacao de membro
     epic: WhatsApp operacional inicial
@@ -112,10 +113,10 @@ burndown:
     notes: Sprint concluida
 metrics:
   total_stories: 5
-  completed_stories: 2
+  completed_stories: 3
   in_progress_stories: 0
   blocked_stories: 0
   total_points: 20
-  completed_points: 8
-  completion_percentage: 40
-last_updated: "2026-04-17T13:03:02Z"
+  completed_points: 10
+  completion_percentage: 50
+last_updated: "2026-04-17T13:06:08Z"

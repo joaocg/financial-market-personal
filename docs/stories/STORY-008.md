@@ -4,7 +4,7 @@
 - **Epic:** Motor financeiro basico
 - **Priority:** Should Have
 - **Story Points:** 2
-- **Status:** Not Started
+- **Status:** Completed
 
 ## User Story
 
@@ -14,10 +14,10 @@ So that **eu consiga saber quem fez cada operacao e por qual canal ela entrou**
 
 ## Acceptance Criteria
 
-- [ ] **Criterion 1:** Cada lancamento manual registra actor, familia, tipo de evento e canal de origem.
-- [ ] **Criterion 2:** Existe estrutura persistente minima para trilha de auditoria financeira.
-- [ ] **Criterion 3:** A trilha de auditoria nao depende exclusivamente de logs efemeros da aplicacao.
-- [ ] **Criterion 4:** O desenho permite futura extensao para cancelamento, eventos de conversa e correlacao.
+- [x] **Criterion 1:** Cada lancamento manual registra actor, familia, tipo de evento e canal de origem.
+- [x] **Criterion 2:** Existe estrutura persistente minima para trilha de auditoria financeira.
+- [x] **Criterion 3:** A trilha de auditoria nao depende exclusivamente de logs efemeros da aplicacao.
+- [x] **Criterion 4:** O desenho permite futura extensao para cancelamento, eventos de conversa e correlacao.
 
 ## Technical Notes
 
@@ -72,8 +72,8 @@ Registrar auditoria no mesmo fluxo transacional, com payload enxuto, evitando sa
 
 ### Open Questions
 
-- [ ] A nomenclatura padrao sera `audit_logs` compartilhada ou uma tabela especifica do modulo `Ledger`?
-- [ ] Quais campos minimos entram em `metadata` nesta primeira iteracao?
+- [x] A nomenclatura padrao sera `audit_logs` compartilhada ou uma tabela especifica do modulo `Ledger`?
+- [x] Quais campos minimos entram em `metadata` nesta primeira iteracao?
 
 ## Testing Requirements
 
@@ -110,4 +110,4 @@ This story is considered complete when:
 
 ## Notes
 
-Esta historia materializa a base de `FR-013` e `NFR-006` para o dominio financeiro antes da entrada do canal conversacional.
+Implementacao concluida com migration `audit_logs`, model `AuditLog`, builder `BuildAuditMetadata` e gravacao obrigatoria no mesmo fluxo transacional de `RecordTransactionAction`. A trilha persistida inclui `family_id`, `transaction_id`, `event_type`, `actor_id`, `origin_channel` e `metadata` serializavel. Os testes `BuildAuditMetadataTest`, `LedgerTransactionTest` e `LedgerBalanceTest` passaram no container.
