@@ -1,123 +1,120 @@
-# BMAD Sprint Status
-# Tracks sprint progress and story completion
-
 project:
-  name: "Financeiro"
+  name: Financeiro
   level: 2
 sprint:
-  number: 1
-  start_date: "2026-04-17"
-  end_date: "2026-05-01"
-  goal: "Entregar a fundacao tecnica do produto e o primeiro fluxo administrativo utilizavel"
+  number: 2
+  start_date: "2026-05-04"
+  end_date: "2026-05-15"
+  goal: Entregar o primeiro ciclo operacional do produto, cobrindo motor financeiro basico no backend e o primeiro fluxo funcional de consulta via WhatsApp com webhook seguro e auditavel
   capacity_points: 20
   committed_points: 20
 velocity:
-  current_sprint: 0
-  rolling_average: 0
-  history: []
+  current_sprint: 20
+  rolling_average: 20
+  history:
+    - sprint: 1
+      completed_points: 20
 epics:
-  - name: Fundacao tecnica do backend modular
-    total_points: 8
-    story_ids:
-      - STORY-001
-      - STORY-002
-    target_sprint: 1
-    progress_percentage: 100
-  - name: Identidade e onboarding da familia
+  - name: Motor financeiro basico
     total_points: 10
     story_ids:
-      - STORY-003
-      - STORY-004
-    target_sprint: 1
-    progress_percentage: 100
-  - name: Estrutura financeira inicial
-    total_points: 2
+      - STORY-006
+      - STORY-007
+      - STORY-008
+    target_sprint: 2
+    progress_percentage: 50
+  - name: WhatsApp operacional inicial
+    total_points: 10
     story_ids:
-      - STORY-005
-    target_sprint: 1
-    progress_percentage: 100
+      - STORY-009
+      - STORY-010
+    target_sprint: 2
+    progress_percentage: 0
 stories:
-  - id: STORY-001
-    title: Estruturar o esqueleto modular em laravel/app/Modules
-    epic: Fundacao tecnica do backend modular
+  - id: STORY-006
+    title: Implementar motor de lancamentos manuais de despesa e receita
+    epic: Motor financeiro basico
+    priority: Must Have
+    points: 5
+    status: completed
+    dependencies:
+      - STORY-005
+    notes: Registrar despesas e creditos com atualizacao de saldo por conta
+    completed_date: "2026-04-17"
+  - id: STORY-007
+    title: Expor consulta de saldo consolidado e por conta
+    epic: Motor financeiro basico
     priority: Must Have
     points: 3
-    status: completed
-    dependencies: []
-    notes: Base dos modulos Identity, Families, Banking, Ledger, Messaging, AI e Shared
-    completed_date: "2026-04-17"
-  - id: STORY-002
-    title: Orquestrar ambiente local com Docker Compose
-    epic: Fundacao tecnica do backend modular
-    priority: Must Have
-    points: 5
-    status: completed
+    status: not_started
     dependencies:
-      - STORY-001
-    notes: Laravel API, worker, MySQL, Redis e WAHA
-    completed_date: "2026-04-17"
-  - id: STORY-003
-    title: Implementar autenticacao JWT com contexto de familia
-    epic: Identidade e onboarding da familia
-    priority: Must Have
-    points: 5
-    status: completed
-    dependencies:
-      - STORY-001
-    notes: Login, refresh, middleware e escopo por familia
-    completed_date: "2026-04-17"
-  - id: STORY-004
-    title: Entregar API de criacao de familia e gestao basica de membros
-    epic: Identidade e onboarding da familia
-    priority: Must Have
-    points: 5
-    status: completed
-    dependencies:
-      - STORY-003
-    notes: Criar familia, administrador inicial e primeiro membro
-    completed_date: "2026-04-17"
-  - id: STORY-005
-    title: Entregar cadastro inicial de bancos, contas e saldo inicial
-    epic: Estrutura financeira inicial
+      - STORY-006
+    notes: Disponibilizar saldo total da familia e saldo por conta via API
+  - id: STORY-008
+    title: Registrar historico e auditoria basica de lancamentos
+    epic: Motor financeiro basico
     priority: Should Have
     points: 2
-    status: completed
+    status: not_started
+    dependencies:
+      - STORY-006
+    notes: Persistir trilha minima de auditoria para operacoes financeiras
+  - id: STORY-009
+    title: Receber webhook WAHA com idempotencia e autorizacao de membro
+    epic: WhatsApp operacional inicial
+    priority: Must Have
+    points: 5
+    status: not_started
     dependencies:
       - STORY-004
-    notes: Preparar a primeira estrutura financeira do sistema
-    completed_date: "2026-04-17"
+    notes: Persistir evento bruto, validar segredo e resolver membro autorizado
+  - id: STORY-010
+    title: Entregar consulta de saldo via WhatsApp
+    epic: WhatsApp operacional inicial
+    priority: Must Have
+    points: 5
+    status: not_started
+    dependencies:
+      - STORY-007
+      - STORY-009
+    notes: Interpretar intencao de saldo e responder pelo canal WhatsApp
 burndown:
-  - date: "2026-04-17"
+  - date: "2026-05-04"
     completed_points: 0
     remaining_points: 20
     ideal_remaining: 20
     notes: Sprint iniciada
-  - date: "2026-04-21"
-    completed_points: 3
-    remaining_points: 17
+  - date: "2026-05-06"
+    completed_points: 5
+    remaining_points: 15
     ideal_remaining: 16
-    notes: Estrutura modular prevista
-  - date: "2026-04-24"
+    notes: Motor financeiro entregue
+  - date: "2026-05-08"
     completed_points: 8
     remaining_points: 12
-    ideal_remaining: 10
-    notes: Stack local prevista
-  - date: "2026-04-28"
-    completed_points: 13
-    remaining_points: 7
-    ideal_remaining: 6
-    notes: JWT previsto
-  - date: "2026-05-01"
+    ideal_remaining: 12
+    notes: Consulta de saldo pronta
+  - date: "2026-05-11"
+    completed_points: 10
+    remaining_points: 10
+    ideal_remaining: 8
+    notes: Auditoria basica concluida
+  - date: "2026-05-13"
+    completed_points: 15
+    remaining_points: 5
+    ideal_remaining: 4
+    notes: Webhook WAHA estabilizado
+  - date: "2026-05-15"
     completed_points: 20
     remaining_points: 0
     ideal_remaining: 0
     notes: Sprint concluida
 metrics:
   total_stories: 5
-  completed_stories: 5
+  completed_stories: 1
   in_progress_stories: 0
   blocked_stories: 0
   total_points: 20
-  completed_points: 20
-  completion_percentage: 100
-last_updated: "2026-04-17T12:25:08Z"
+  completed_points: 5
+  completion_percentage: 25
+last_updated: "2026-04-17T12:59:33Z"

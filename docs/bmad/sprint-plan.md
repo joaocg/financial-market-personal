@@ -1,86 +1,80 @@
 # Sprint Plan: Financeiro Familiar com WhatsApp
 
-- **Sprint Number:** 1
-- **Sprint Dates:** 2026-04-17 - 2026-05-01
+- **Sprint Number:** 2
+- **Sprint Dates:** 2026-05-04 - 2026-05-15
 - **Sprint Duration:** 2 semanas / 10 dias uteis
 - **Created:** 2026-04-17
 
 ## Sprint Overview
 
-**Sprint Goal:** estabelecer a fundacao tecnica do produto e entregar o primeiro fluxo administrativo utilizavel, cobrindo autenticacao, contexto de familia, cadastro inicial da estrutura financeira e ambiente local executavel.
+**Sprint Goal:** entregar o primeiro ciclo operacional do produto, cobrindo motor financeiro basico no backend e o primeiro fluxo funcional de consulta via WhatsApp com webhook seguro e auditavel.
 
 **Sprint Capacity:** 20 story points  
 **Stories Planned:** 5 stories  
 **Total Story Points:** 20 points
 
 **Capacity Calculation:**
-- **Base capacity:** 20 pontos, conforme capacidade configurada em `bmad/sprint-status.yaml`
-- **Adjustments:** sem historico de velocity e sem indisponibilidades registradas; planejamento mantido de forma conservadora
+- **Base capacity:** 20 pontos, usando a velocity observada da Sprint 1
+- **Adjustments:** sem PTO ou feriados registrados; mantida a mesma capacidade para preservar previsibilidade
 - **Final capacity:** 20 pontos
 
 ## Velocity Metrics
 
 **Historical Velocity:**
-- Sprint anterior: nao disponivel
+- Sprint anterior: 20 pontos
 - **3-Sprint Average:** nao aplicavel
 
 **Team Composition:**
 - 1 desenvolvedor principal equivalente
 - 10 dias uteis estimados nesta sprint
-- 2 pontos por dev-day como taxa conservadora para inicio de projeto
+- 2 pontos por dev-day como taxa conservadora e ja validada pela Sprint 1
 
 ## Sprint Backlog
 
-### Epic 1: Fundacao tecnica do backend modular (8 points)
+### Epic 1: Motor financeiro basico (10 points)
 
-**Epic Goal:** preparar a base do backend Laravel modular e a stack local para que os proximos fluxos possam ser implementados sem retrabalho estrutural.
+**Epic Goal:** permitir registrar movimentacoes financeiras manuais e consultar saldo consolidado com consistencia por familia e conta.
 
-#### STORY-001: Estruturar o esqueleto modular em `laravel/app/Modules`
+#### STORY-006: Implementar motor de lancamentos manuais de despesa e receita
+- **Priority:** Must Have
+- **Points:** 5
+- **Status:** Not Started
+- **Dependencies:** STORY-005
+- **Brief:** criar endpoints e regras de negocio para registrar despesas e creditos, atualizando o saldo corrente da conta e mantendo rastreabilidade do actor e do canal.
+
+#### STORY-007: Expor consulta de saldo consolidado e por conta
 - **Priority:** Must Have
 - **Points:** 3
 - **Status:** Not Started
-- **Dependencies:** None
-- **Brief:** criar a estrutura base de modulos `Identity`, `Families`, `Banking`, `Ledger`, `Messaging`, `AI` e `Shared`, com convencoes de organizacao e bootstrap inicial.
+- **Dependencies:** STORY-006
+- **Brief:** disponibilizar API para saldo total da familia e saldo por conta, com payload simples para consumo futuro pelo frontend e pelo canal WhatsApp.
 
-#### STORY-002: Orquestrar ambiente local com Docker Compose
-- **Priority:** Must Have
-- **Points:** 5
-- **Status:** Not Started
-- **Dependencies:** STORY-001
-- **Brief:** disponibilizar a stack local com Laravel API, worker, MySQL, Redis e WAHA, incluindo variaveis essenciais e healthchecks iniciais.
-
----
-
-### Epic 2: Identidade e onboarding da familia (10 points)
-
-**Epic Goal:** permitir autenticacao JWT e criacao do contexto inicial da familia para habilitar o uso do sistema pelo administrador.
-
-#### STORY-003: Implementar autenticacao JWT com contexto de familia
-- **Priority:** Must Have
-- **Points:** 5
-- **Status:** Not Started
-- **Dependencies:** STORY-001
-- **Brief:** implementar login, refresh, middleware e resolucao de membership por familia no backend.
-
-#### STORY-004: Entregar API de criacao de familia e gestao basica de membros
-- **Priority:** Must Have
-- **Points:** 5
-- **Status:** Not Started
-- **Dependencies:** STORY-003
-- **Brief:** permitir criar familia, vincular administrador inicial e cadastrar o primeiro membro com papel e idioma.
-
----
-
-### Epic 3: Estrutura financeira inicial (2 points)
-
-**Epic Goal:** habilitar o cadastro inicial da estrutura financeira minima da familia.
-
-#### STORY-005: Entregar cadastro inicial de bancos, contas e saldo inicial
+#### STORY-008: Registrar historico e auditoria basica de lancamentos
 - **Priority:** Should Have
 - **Points:** 2
 - **Status:** Not Started
+- **Dependencies:** STORY-006
+- **Brief:** persistir trilha minima de auditoria para lancamentos manuais, incluindo tipo de evento, actor, contexto familiar e origem da operacao.
+
+---
+
+### Epic 2: WhatsApp operacional inicial (10 points)
+
+**Epic Goal:** habilitar o primeiro fluxo conversacional util do MVP, com recepcao de webhook WAHA, validacao do remetente e resposta de consulta de saldo.
+
+#### STORY-009: Receber webhook WAHA com idempotencia e autorizacao de membro
+- **Priority:** Must Have
+- **Points:** 5
+- **Status:** Not Started
 - **Dependencies:** STORY-004
-- **Brief:** criar o endpoint inicial para banco e conta com saldo de abertura, suficiente para preparar o primeiro fluxo financeiro do proximo sprint.
+- **Brief:** criar endpoint de webhook, validar segredo, persistir evento bruto, garantir idempotencia e resolver o membro autorizado pelo contato recebido.
+
+#### STORY-010: Entregar consulta de saldo via WhatsApp
+- **Priority:** Must Have
+- **Points:** 5
+- **Status:** Not Started
+- **Dependencies:** STORY-007, STORY-009
+- **Brief:** interpretar a intencao basica de saldo, consultar o backend e responder pelo fluxo de mensagens com idioma e contexto do membro.
 
 ---
 
@@ -88,22 +82,22 @@
 
 ### Must Have (Critical Path)
 
-1. `STORY-001` - esqueleto modular do backend (3 points)
-2. `STORY-002` - stack local com Docker Compose (5 points)
-3. `STORY-003` - autenticacao JWT e contexto de familia (5 points)
-4. `STORY-004` - criacao de familia e membros iniciais (5 points)
+1. `STORY-006` - lancamentos manuais de despesa e receita (5 points)
+2. `STORY-007` - consulta de saldo consolidado e por conta (3 points)
+3. `STORY-009` - webhook WAHA com idempotencia e autorizacao (5 points)
+4. `STORY-010` - consulta de saldo via WhatsApp (5 points)
 
 **Total Must Have:** 18 pontos
 
 ### Should Have (High Priority)
 
-1. `STORY-005` - bancos, contas e saldo inicial (2 points)
+1. `STORY-008` - historico e auditoria basica de lancamentos (2 points)
 
 **Total Should Have:** 2 pontos
 
 ### Could Have (Nice to Have)
 
-Nenhuma historia `Could Have` foi incluída nesta sprint para evitar superalocacao no primeiro ciclo.
+Nenhuma historia `Could Have` foi incluída nesta sprint para evitar sobrecarga antes de estabilizar `Ledger` e `Messaging`.
 
 **Total Could Have:** 0 pontos
 
@@ -111,71 +105,76 @@ Nenhuma historia `Could Have` foi incluída nesta sprint para evitar superalocac
 
 Recommended sequence based on dependencies and priorities:
 
-1. **Week 1, Days 1-2:** `STORY-001` - Estruturar o esqueleto modular em `laravel/app/Modules`
-   - Rationale: define a fundacao arquitetural e reduz retrabalho nas historias seguintes.
+1. **Week 1, Days 1-3:** `STORY-006` - Implementar motor de lancamentos manuais de despesa e receita
+   - Rationale: estabelece o nucleo transacional do dominio e desbloqueia saldo, auditoria e uso conversacional.
 
-2. **Week 1, Days 3-5:** `STORY-002` - Orquestrar ambiente local com Docker Compose
-   - Rationale: garante ambiente previsivel para desenvolvimento, testes e integracao com WAHA.
+2. **Week 1, Days 4-5:** `STORY-007` - Expor consulta de saldo consolidado e por conta
+   - Rationale: transforma o ledger em capacidade consultavel e reaproveitavel por API e WhatsApp.
 
-3. **Week 2, Days 1-2:** `STORY-003` - Implementar autenticacao JWT com contexto de familia
-   - Rationale: desbloqueia o controle de acesso para todas as APIs de dominio.
+3. **Week 2, Day 1:** `STORY-008` - Registrar historico e auditoria basica de lancamentos
+   - Rationale: fecha o minimo de auditabilidade exigido pelo PRD sem ampliar demais o escopo do ledger.
 
-4. **Week 2, Days 3-4:** `STORY-004` - Entregar API de criacao de familia e gestao basica de membros
-   - Rationale: materializa o onboarding principal e habilita isolamento por familia.
+4. **Week 2, Days 2-3:** `STORY-009` - Receber webhook WAHA com idempotencia e autorizacao de membro
+   - Rationale: prepara a entrada segura do canal conversacional e reduz risco operacional antes do fluxo de resposta.
 
-5. **Week 2, Day 5:** `STORY-005` - Entregar cadastro inicial de bancos, contas e saldo inicial
-   - Rationale: fecha a capacidade da sprint com o primeiro passo do dominio financeiro.
+5. **Week 2, Days 4-5:** `STORY-010` - Entregar consulta de saldo via WhatsApp
+   - Rationale: materializa o primeiro fluxo util do canal WhatsApp com dependencia direta de saldo e webhook.
 
 ## Story Dependencies
 
 ### Dependency Graph
 
 ```text
-STORY-001
-  ├─> STORY-002
-  └─> STORY-003
-       └─> STORY-004
-             └─> STORY-005
+STORY-005
+  └─> STORY-006
+       ├─> STORY-007
+       │    └─> STORY-010
+       └─> STORY-008
+
+STORY-004
+  └─> STORY-009
+       └─> STORY-010
 ```
 
 ### Critical Path Stories
 
-- `STORY-001` - bloqueia `STORY-002` e `STORY-003`
-- `STORY-003` - bloqueia `STORY-004`
-- `STORY-004` - bloqueia `STORY-005`
+- `STORY-006` - bloqueia `STORY-007` e `STORY-008`
+- `STORY-007` - bloqueia `STORY-010`
+- `STORY-009` - bloqueia `STORY-010`
+- `STORY-010` - representa a entrega final do sprint goal
 
 ### External Dependencies
 
-- Biblioteca JWT do Laravel: precisa ser fechada no inicio da `STORY-003`
-- Configuracao funcional do WAHA em container: precisa estar operante ao fim da `STORY-002`
+- WAHA local com webhook configuravel e estavel: precisa permanecer operacional para validar `STORY-009` e `STORY-010`
+- Estrategia JWT atual do backend: precisa permanecer compativel com o contexto autenticado existente para nao introduzir retrabalho no `Ledger`
 
 ## Risks and Mitigation
 
-### Risk 1: Escolha ou integracao da biblioteca JWT atrasar
+### Risk 1: Modelagem de ledger crescer alem do necessario para o MVP
 - **Probability:** Medium
 - **Impact:** High
-- **Mitigation:** decidir a biblioteca e o modelo de refresh no primeiro dia da implementacao de autenticacao
-- **Contingency:** simplificar a primeira entrega para access token + refresh basico, deixando revogacao avancada para sprint seguinte
+- **Mitigation:** limitar `STORY-006` a despesa, credito e atualizacao de saldo corrente sem categorias avancadas ou ajustes complexos
+- **Contingency:** adiar cancelamento avancado e relatorios detalhados para a sprint seguinte
 
-### Risk 2: Integracao Docker + WAHA exigir mais ajuste operacional que o previsto
+### Risk 2: WAHA exigir ajustes operacionais extras no fluxo de webhook
+- **Probability:** Medium
+- **Impact:** High
+- **Mitigation:** tratar `STORY-009` como entrega de infraestrutura funcional com persistencia de evento bruto e resposta minima
+- **Contingency:** manter o parser de intencao de `STORY-010` simples e restringido a consulta de saldo
+
+### Risk 3: Dependencias cruzadas entre `Ledger` e `Messaging` reduzirem throughput
 - **Probability:** Medium
 - **Impact:** Medium
-- **Mitigation:** limitar a sprint ao bootstrap da stack e validar apenas o basico de comunicacao e health
-- **Contingency:** manter WAHA operacionalmente isolado e seguir com backend/local stack, registrando pendencias menores para sprint seguinte
-
-### Risk 3: Escopo de onboarding crescer para alem do necessario
-- **Probability:** Medium
-- **Impact:** Medium
-- **Mitigation:** limitar `STORY-004` ao fluxo minimo de criar familia e membro inicial
-- **Contingency:** mover convites mais sofisticados para backlog
+- **Mitigation:** fechar contratos internos simples entre modulo de saldo e modulo de mensagens antes de iniciar `STORY-010`
+- **Contingency:** usar DTOs e adaptadores internos sem antecipar generalizacoes de IA nesta sprint
 
 ## Sprint Milestones
 
-- **Day 3:** `STORY-001` concluida e stack local em andamento
-- **Day 6:** `STORY-002` concluida e base pronta para autenticacao
-- **Day 8:** `STORY-003` concluida
-- **Day 9:** `STORY-004` concluida
-- **Day 10:** `STORY-005` concluida e sprint goal atingido
+- **Day 3:** `STORY-006` concluida e saldo por conta atualizado corretamente
+- **Day 5:** `STORY-007` concluida e epic de consulta financeira parcialmente fechado
+- **Day 6:** `STORY-008` concluida e auditabilidade minima assegurada
+- **Day 8:** `STORY-009` concluida com webhook WAHA persistindo eventos idempotentes
+- **Day 10:** `STORY-010` concluida e consulta de saldo via WhatsApp operacional
 
 ## Definition of Done
 
@@ -194,38 +193,39 @@ A story e considerada pronta quando:
 - **Format:** ontem, hoje e bloqueios
 
 ### Sprint Review
-- **Date:** 2026-05-01
+- **Date:** 2026-05-15
 - **Duration:** 1 hora
-- **Purpose:** demonstrar a fundacao tecnica, autenticacao e onboarding administrativo inicial
+- **Purpose:** demonstrar lancamentos manuais, consulta de saldo e o primeiro fluxo funcional no WhatsApp
 
 ### Sprint Retrospective
-- **Date:** 2026-05-01
+- **Date:** 2026-05-15
 - **Duration:** 1 hora
-- **Purpose:** calibrar estimativas, fluxo de implementacao e acoplamentos entre backend, Docker e WAHA
+- **Purpose:** calibrar throughput entre `Ledger`, `Messaging` e dependencias de ambiente
 
 ### Sprint Planning (Next Sprint)
-- **Date:** 2026-05-01 ou proximo dia util
+- **Date:** 2026-05-15 ou proximo dia util
 - **Duration:** 1-2 horas
-- **Purpose:** planejar a primeira sprint focada em operacao financeira e WhatsApp
+- **Purpose:** planejar a sprint de fluxo guiado de lancamento via WhatsApp e primeiros passos de frontend Vue
 
 ## Success Criteria
 
 Esta sprint sera considerada bem-sucedida se:
-1. o backend modular estiver operacional com convencoes basicas definidas;
-2. a stack local subir de forma reproduzivel com Docker Compose;
-3. a autenticacao JWT e o escopo por familia estiverem funcionais;
-4. o administrador conseguir criar a familia e a estrutura financeira minima por API;
-5. nao houver bloqueio arquitetural relevante para iniciar historias de ledger e WhatsApp na sprint seguinte.
+1. o sistema permitir registrar manualmente despesas e creditos com impacto correto no saldo;
+2. a API responder saldo consolidado e por conta com escopo por familia;
+3. o backend receber e persistir webhooks do WAHA com idempotencia e autorizacao minima;
+4. um membro autorizado conseguir consultar saldo pelo WhatsApp com resposta valida;
+5. o backlog seguinte possa focar em fluxo guiado de lancamento e frontend sem bloqueio estrutural.
 
 ## Burndown Tracking
 
 | Date | Completed | Remaining | Ideal Remaining | Notes |
 |------|-----------|-----------|-----------------|-------|
-| 2026-04-17 | 0 | 20 | 20 | Sprint iniciada |
-| 2026-04-21 | 3 | 17 | 16 | Estrutura modular concluida |
-| 2026-04-24 | 8 | 12 | 10 | Docker Compose e stack local estabilizados |
-| 2026-04-28 | 13 | 7 | 6 | JWT concluido |
-| 2026-05-01 | 20 | 0 | 0 | Sprint concluida |
+| 2026-05-04 | 0 | 20 | 20 | Sprint iniciada |
+| 2026-05-06 | 5 | 15 | 16 | Motor financeiro entregue |
+| 2026-05-08 | 8 | 12 | 12 | Consulta de saldo pronta |
+| 2026-05-11 | 10 | 10 | 8 | Auditoria basica concluida |
+| 2026-05-13 | 15 | 5 | 4 | Webhook WAHA estabilizado |
+| 2026-05-15 | 20 | 0 | 0 | Sprint concluida |
 
 ## Team Capacity
 
@@ -240,18 +240,18 @@ Esta sprint sera considerada bem-sucedida se:
 - **Holidays:** nao registrados
 - **PTO:** nao registrado
 - **Meetings:** absorvidos no fator conservador de 2 pontos por dia
-- **Support/On-call:** nao considerado neste primeiro planejamento
+- **Support/On-call:** nao considerado
 
 ## Backlog Sugerido para Sprint Seguinte
 
-1. `STORY-006` - consulta de saldo consolidado por API (3 points)
-2. `STORY-007` - lancamento manual de despesa e receita (5 points)
-3. `STORY-008` - recepcao de webhook WAHA com idempotencia (5 points)
-4. `STORY-009` - fluxo guiado de consulta de saldo via WhatsApp (5 points)
-5. `STORY-010` - historico e auditoria de lancamentos (3 points)
+1. `STORY-011` - fluxo guiado de registro de despesa via WhatsApp (5 points)
+2. `STORY-012` - fluxo guiado de registro de credito via WhatsApp (5 points)
+3. `STORY-013` - painel Vue para login e onboarding inicial (5 points)
+4. `STORY-014` - painel Vue para saldo consolidado e contas (3 points)
+5. `STORY-015` - ingestao inicial de imagem para assistencia por IA (5 points)
 
 ## Notes
 
-- O plano assume um primeiro sprint de fundacao, sem tentar entregar todo o canal conversacional cedo demais.
-- O escopo foi mantido em 20 pontos para respeitar a capacidade configurada e evitar historias acima de 5 pontos.
-- As historias foram decompostas para permitir que `bmad:create-story` gere artefatos detalhados a seguir, se desejado.
+- A Sprint 2 usa a velocity real de 20 pontos da Sprint 1 como referencia de capacidade.
+- O escopo foi intencionalmente concentrado em `Ledger` e `Messaging`, que sao os proximos habilitadores diretos do MVP.
+- O frontend Vue continua fora do sprint para evitar dispersao antes da validacao do primeiro fluxo WhatsApp realmente utilizavel.
