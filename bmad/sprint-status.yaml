@@ -2,123 +2,86 @@ project:
   name: Financeiro
   level: 2
 sprint:
-  number: 2
-  start_date: "2026-05-04"
-  end_date: "2026-05-15"
-  goal: Entregar o primeiro ciclo operacional do produto, cobrindo motor financeiro basico no backend e o primeiro fluxo funcional de consulta via WhatsApp com webhook seguro e auditavel
+  number: 3
+  start_date: "2026-05-18"
+  end_date: "2026-05-29"
+  goal: Entregar o fluxo guiado de registro via WhatsApp e o primeiro painel Vue do produto
   capacity_points: 20
-  committed_points: 20
+  committed_points: 18
 velocity:
   current_sprint: 20
   rolling_average: 20
   history:
     - sprint: 1
       completed_points: 20
+    - sprint: 2
+      completed_points: 20
 epics:
-  - name: Motor financeiro basico
+  - name: Fluxo guiado WhatsApp
     total_points: 10
     story_ids:
-      - STORY-006
-      - STORY-007
-      - STORY-008
-    target_sprint: 2
-    progress_percentage: 100
-  - name: WhatsApp operacional inicial
-    total_points: 10
+      - STORY-011
+      - STORY-012
+    target_sprint: 3
+    progress_percentage: 0
+  - name: Frontend Vue inicial
+    total_points: 8
     story_ids:
-      - STORY-009
-      - STORY-010
-    target_sprint: 2
-    progress_percentage: 100
+      - STORY-013
+      - STORY-014
+    target_sprint: 3
+    progress_percentage: 0
 stories:
-  - id: STORY-006
-    title: Implementar motor de lancamentos manuais de despesa e receita
-    epic: Motor financeiro basico
+  - id: STORY-011
+    title: Fluxo guiado de registro de despesa via WhatsApp
+    epic: Fluxo guiado WhatsApp
     priority: Must Have
     points: 5
-    status: completed
+    status: not_started
     dependencies:
-      - STORY-005
-    notes: Registrar despesas e creditos com atualizacao de saldo por conta
-    completed_date: "2026-04-17"
-  - id: STORY-007
-    title: Expor consulta de saldo consolidado e por conta
-    epic: Motor financeiro basico
+      - STORY-009
+      - STORY-006
+    notes: Registrar despesas com conversa guiada e confirmacao antes de persistir.
+  - id: STORY-012
+    title: Fluxo guiado de registro de credito via WhatsApp
+    epic: Fluxo guiado WhatsApp
+    priority: Must Have
+    points: 5
+    status: not_started
+    dependencies:
+      - STORY-009
+      - STORY-006
+    notes: Registrar creditos com conversa guiada e confirmacao antes de persistir.
+  - id: STORY-013
+    title: Painel Vue para login e onboarding inicial
+    epic: Frontend Vue inicial
+    priority: Must Have
+    points: 5
+    status: not_started
+    dependencies: []
+    notes: Preparar entrada visual para o frontend do MVP.
+  - id: STORY-014
+    title: Painel Vue para saldo consolidado e contas
+    epic: Frontend Vue inicial
     priority: Must Have
     points: 3
-    status: completed
-    dependencies:
-      - STORY-006
-    notes: Disponibilizar saldo total da familia e saldo por conta via API
-    completed_date: "2026-04-17"
-  - id: STORY-008
-    title: Registrar historico e auditoria basica de lancamentos
-    epic: Motor financeiro basico
-    priority: Should Have
-    points: 2
-    status: completed
-    dependencies:
-      - STORY-006
-    notes: Persistir trilha minima de auditoria para operacoes financeiras
-    completed_date: "2026-04-17"
-  - id: STORY-009
-    title: Receber webhook WAHA com idempotencia e autorizacao de membro
-    epic: WhatsApp operacional inicial
-    priority: Must Have
-    points: 5
-    status: completed
-    dependencies:
-      - STORY-004
-    notes: Persistir evento bruto, validar segredo e resolver membro autorizado
-    completed_date: "2026-04-17"
-  - id: STORY-010
-    title: Entregar consulta de saldo via WhatsApp
-    epic: WhatsApp operacional inicial
-    priority: Must Have
-    points: 5
-    status: completed
+    status: not_started
     dependencies:
       - STORY-007
-      - STORY-009
-    notes: Interpretar intencao de saldo e responder pelo canal WhatsApp
-    completed_date: "2026-04-17"
-burndown:
-  - date: "2026-05-04"
-    completed_points: 0
-    remaining_points: 20
-    ideal_remaining: 20
-    notes: Sprint iniciada
-  - date: "2026-05-06"
-    completed_points: 5
-    remaining_points: 15
-    ideal_remaining: 16
-    notes: Motor financeiro entregue
-  - date: "2026-05-08"
-    completed_points: 8
-    remaining_points: 12
-    ideal_remaining: 12
-    notes: Consulta de saldo pronta
-  - date: "2026-05-11"
-    completed_points: 10
-    remaining_points: 10
-    ideal_remaining: 8
-    notes: Auditoria basica concluida
-  - date: "2026-05-13"
-    completed_points: 15
-    remaining_points: 5
-    ideal_remaining: 4
-    notes: Webhook WAHA estabilizado
-  - date: "2026-05-15"
-    completed_points: 20
-    remaining_points: 0
-    ideal_remaining: 0
-    notes: Sprint concluida
+      - STORY-013
+    notes: Exibir o saldo consolidado e por conta em um painel inicial.
+stretch_backlog:
+  - id: STORY-015
+    title: Ingestao inicial de imagem para assistencia por IA
+    points: 5
+    status: not_started
+    note: Mantida fora do compromisso da sprint por capacidade.
 metrics:
-  total_stories: 5
-  completed_stories: 5
+  total_stories: 4
+  completed_stories: 0
   in_progress_stories: 0
   blocked_stories: 0
-  total_points: 20
-  completed_points: 20
-  completion_percentage: 100
-last_updated: "2026-04-17T17:12:43Z"
+  total_points: 18
+  completed_points: 0
+  completion_percentage: 0
+last_updated: "2026-04-17T17:26:05Z"
