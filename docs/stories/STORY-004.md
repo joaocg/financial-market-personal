@@ -4,7 +4,7 @@
 - **Epic:** Identidade e onboarding da familia
 - **Priority:** Must Have
 - **Story Points:** 5
-- **Status:** Not Started
+- **Status:** Completed
 
 ## User Story
 
@@ -14,11 +14,11 @@ So that **o sistema passe a ter um contexto real de operacao e permissao**
 
 ## Acceptance Criteria
 
-- [ ] **Criterion 1:** Existe endpoint autenticado para criar uma familia e vincular o usuario logado como administrador inicial.
-- [ ] **Criterion 2:** Existe endpoint para cadastrar o primeiro membro com papel e idioma preferencial.
-- [ ] **Criterion 3:** Os dados criados ficam corretamente vinculados ao contexto da familia.
-- [ ] **Criterion 4:** O sistema impede operacoes fora do escopo da familia do usuario autenticado.
-- [ ] **Criterion 5:** A resposta da API fornece os identificadores necessarios para continuar o onboarding.
+- [x] **Criterion 1:** Existe endpoint autenticado para criar uma familia e vincular o usuario logado como administrador inicial.
+- [x] **Criterion 2:** Existe endpoint para cadastrar o primeiro membro com papel e idioma preferencial.
+- [x] **Criterion 3:** Os dados criados ficam corretamente vinculados ao contexto da familia.
+- [x] **Criterion 4:** O sistema impede operacoes fora do escopo da familia do usuario autenticado.
+- [x] **Criterion 5:** A resposta da API fornece os identificadores necessarios para continuar o onboarding.
 
 ## Technical Notes
 
@@ -76,8 +76,8 @@ Fluxo de escrita simples; priorizar consistencia e clareza da API sobre micro-ot
 
 ### Open Questions
 
-- [ ] O primeiro membro cadastrado apos o admin sera sempre manual ou ja deve suportar convite pendente?
-- [ ] O idioma sera armazenado no membership, no contato ou em entidade separada de perfil?
+- [x] O primeiro membro cadastrado apos o admin sera sempre manual ou ja deve suportar convite pendente?
+- [x] O idioma sera armazenado no membership, no contato ou em entidade separada de perfil?
 
 ## Testing Requirements
 
@@ -116,4 +116,4 @@ This story is considered complete when:
 
 ## Notes
 
-Convites sofisticados, vinculo por WhatsApp e gestao completa de membros continuam fora do escopo desta historia. O objetivo e destravar o onboarding minimo do dominio.
+Implementacao concluida com `POST /api/v1/families`, `POST /api/v1/families/{familyId}/members` e `GET /api/v1/families/current`, alem de `CreateFamilyAction`, `CreateFamilyMemberAction`, `member_contacts` e suporte a membership sem `user_id` para cadastro manual do primeiro membro.

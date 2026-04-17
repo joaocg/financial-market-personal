@@ -29,7 +29,7 @@ epics:
       - STORY-003
       - STORY-004
     target_sprint: 1
-    progress_percentage: 50
+    progress_percentage: 100
   - name: Estrutura financeira inicial
     total_points: 2
     story_ids:
@@ -71,10 +71,11 @@ stories:
     epic: Identidade e onboarding da familia
     priority: Must Have
     points: 5
-    status: not_started
+    status: completed
     dependencies:
       - STORY-003
     notes: Criar familia, administrador inicial e primeiro membro
+    completed_date: "2026-04-17"
   - id: STORY-005
     title: Entregar cadastro inicial de bancos, contas e saldo inicial
     epic: Estrutura financeira inicial
@@ -112,10 +113,10 @@ burndown:
     notes: Sprint concluida
 metrics:
   total_stories: 5
-  completed_stories: 3
+  completed_stories: 4
   in_progress_stories: 0
   blocked_stories: 0
   total_points: 20
-  completed_points: 13
-  completion_percentage: 65
-last_updated: "2026-04-17T12:05:00Z"
+  completed_points: 18
+  completion_percentage: 90
+last_updated: "2026-04-17T12:22:00Z"
