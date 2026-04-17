@@ -1,0 +1,146 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    working_dir: /var/www/html
+    volumes:
+      - ./laravel:/var/www/html
+      - composer_vendor:/var/www/html/vendor
+    environment:
+      APP_ENV: local
+      APP_DEBUG: "true"
+      APP_URL: http://localhost:8000
+      DB_CONNECTION: mysql
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_DATABASE: financeiro
+      DB_USERNAME: financeiro
+      DB_PASSWORD: financeiro
+      CACHE_STORE: redis
+      QUEUE_CONNECTION: redis
+      SESSION_DRIVER: database
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_PASSWORD: null
+      WAHA_BASE_URL: http://waha:3000
+      WAHA_API_KEY: local-waha-key
+      WAHA_WEBHOOK_SECRET: local-waha-webhook-secret
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+    command: ["/usr/local/bin/start-app"]
+    healthcheck:
+      test: ["CMD-SHELL", "php -r '$$r=@file_get_contents(\"http://127.0.0.1:8000/up\"); exit($$r===false?1:0);'"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  worker:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    working_dir: /var/www/html
+    volumes:
+      - ./laravel:/var/www/html
+      - composer_vendor:/var/www/html/vendor
+    environment:
+      APP_ENV: local
+      APP_DEBUG: "true"
+      APP_URL: http://localhost:8000
+      DB_CONNECTION: mysql
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_DATABASE: financeiro
+      DB_USERNAME: financeiro
+      DB_PASSWORD: financeiro
+      CACHE_STORE: redis
+      QUEUE_CONNECTION: redis
+      SESSION_DRIVER: database
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_PASSWORD: null
+      WAHA_BASE_URL: http://waha:3000
+      WAHA_API_KEY: local-waha-key
+      WAHA_WEBHOOK_SECRET: local-waha-webhook-secret
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    command: ["/usr/local/bin/start-worker"]
+
+  mysql:
+    image: mysql:8.4
+    environment:
+      MYSQL_DATABASE: financeiro
+      MYSQL_USER: financeiro
+      MYSQL_PASSWORD: financeiro
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -proot --silent"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 10
+
+  waha:
+    image: devlikeapro/waha:latest
+    dns:
+      - 1.1.1.1
+      - 8.8.8.8
+    environment:
+      WAHA_API_KEY: local-waha-key
+      WAHA_DASHBOARD_ENABLED: "true"
+      WAHA_DASHBOARD_USERNAME: admin
+      WAHA_DASHBOARD_PASSWORD: admin
+      WHATSAPP_SWAGGER_ENABLED: "true"
+      WHATSAPP_SWAGGER_USERNAME: admin
+      WHATSAPP_SWAGGER_PASSWORD: admin
+      WHATSAPP_DEFAULT_ENGINE: WEBJS
+      WAHA_NAMESPACE: all
+      WAHA_BASE_URL: http://waha:3000
+      WAHA_LOG_FORMAT: PRETTY
+      WAHA_LOG_LEVEL: info
+      WAHA_PRINT_QR: "false"
+      WAHA_MEDIA_STORAGE: LOCAL
+      WHATSAPP_FILES_FOLDER: /app/.media
+    ports:
+      - "3000:3000"
+    volumes:
+      - waha_sessions:/app/.sessions
+      - waha_media:/app/.media
+    healthcheck:
+      test: ["CMD-SHELL", "node -e \"require('http').get('http://127.0.0.1:3000/', r => process.exit(r.statusCode < 500 ? 0 : 1)).on('error', () => process.exit(1))\""]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+      start_period: 40s
+
+volumes:
+  composer_vendor:
+  mysql_data:
+  redis_data:
+  waha_sessions:
+  waha_media:

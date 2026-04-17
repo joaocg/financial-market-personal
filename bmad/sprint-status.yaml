@@ -1,0 +1,120 @@
+# BMAD Sprint Status
+# Tracks sprint progress and story completion
+
+project:
+  name: "Financeiro"
+  level: 2
+sprint:
+  number: 1
+  start_date: "2026-04-17"
+  end_date: "2026-05-01"
+  goal: "Entregar a fundacao tecnica do produto e o primeiro fluxo administrativo utilizavel"
+  capacity_points: 20
+  committed_points: 20
+velocity:
+  current_sprint: 0
+  rolling_average: 0
+  history: []
+epics:
+  - name: Fundacao tecnica do backend modular
+    total_points: 8
+    story_ids:
+      - STORY-001
+      - STORY-002
+    target_sprint: 1
+    progress_percentage: 100
+  - name: Identidade e onboarding da familia
+    total_points: 10
+    story_ids:
+      - STORY-003
+      - STORY-004
+    target_sprint: 1
+    progress_percentage: 0
+  - name: Estrutura financeira inicial
+    total_points: 2
+    story_ids:
+      - STORY-005
+    target_sprint: 1
+    progress_percentage: 0
+stories:
+  - id: STORY-001
+    title: Estruturar o esqueleto modular em laravel/app/Modules
+    epic: Fundacao tecnica do backend modular
+    priority: Must Have
+    points: 3
+    status: completed
+    dependencies: []
+    notes: Base dos modulos Identity, Families, Banking, Ledger, Messaging, AI e Shared
+    completed_date: "2026-04-17"
+  - id: STORY-002
+    title: Orquestrar ambiente local com Docker Compose
+    epic: Fundacao tecnica do backend modular
+    priority: Must Have
+    points: 5
+    status: completed
+    dependencies:
+      - STORY-001
+    notes: Laravel API, worker, MySQL, Redis e WAHA
+    completed_date: "2026-04-17"
+  - id: STORY-003
+    title: Implementar autenticacao JWT com contexto de familia
+    epic: Identidade e onboarding da familia
+    priority: Must Have
+    points: 5
+    status: not_started
+    dependencies:
+      - STORY-001
+    notes: Login, refresh, middleware e escopo por familia
+  - id: STORY-004
+    title: Entregar API de criacao de familia e gestao basica de membros
+    epic: Identidade e onboarding da familia
+    priority: Must Have
+    points: 5
+    status: not_started
+    dependencies:
+      - STORY-003
+    notes: Criar familia, administrador inicial e primeiro membro
+  - id: STORY-005
+    title: Entregar cadastro inicial de bancos, contas e saldo inicial
+    epic: Estrutura financeira inicial
+    priority: Should Have
+    points: 2
+    status: not_started
+    dependencies:
+      - STORY-004
+    notes: Preparar a primeira estrutura financeira do sistema
+burndown:
+  - date: "2026-04-17"
+    completed_points: 0
+    remaining_points: 20
+    ideal_remaining: 20
+    notes: Sprint iniciada
+  - date: "2026-04-21"
+    completed_points: 3
+    remaining_points: 17
+    ideal_remaining: 16
+    notes: Estrutura modular prevista
+  - date: "2026-04-24"
+    completed_points: 8
+    remaining_points: 12
+    ideal_remaining: 10
+    notes: Stack local prevista
+  - date: "2026-04-28"
+    completed_points: 13
+    remaining_points: 7
+    ideal_remaining: 6
+    notes: JWT previsto
+  - date: "2026-05-01"
+    completed_points: 20
+    remaining_points: 0
+    ideal_remaining: 0
+    notes: Sprint concluida
+metrics:
+  total_stories: 5
+  completed_stories: 2
+  in_progress_stories: 0
+  blocked_stories: 0
+  total_points: 20
+  completed_points: 8
+  completion_percentage: 40
+last_updated: "2026-04-17T11:54:58Z"
