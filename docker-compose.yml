@@ -12,11 +12,11 @@ services:
       APP_DEBUG: "true"
       APP_URL: http://localhost:8000
       DB_CONNECTION: mysql
-      DB_HOST: mysql
+      DB_HOST: host.docker.internal
       DB_PORT: 3306
-      DB_DATABASE: financeiro
-      DB_USERNAME: financeiro
-      DB_PASSWORD: financeiro
+      DB_DATABASE: joao_financeiro
+      DB_USERNAME: root
+      DB_PASSWORD: 123456789
       CACHE_STORE: redis
       QUEUE_CONNECTION: redis
       SESSION_DRIVER: file
@@ -26,6 +26,7 @@ services:
       WAHA_BASE_URL: http://waha:3000
       WAHA_API_KEY: local-waha-key
       WAHA_WEBHOOK_SECRET: local-waha-webhook-secret
+      AUTH_JWT_SECRET: local-jwt-secret
     depends_on:
       mysql:
         condition: service_healthy
@@ -54,11 +55,11 @@ services:
       APP_DEBUG: "true"
       APP_URL: http://localhost:8000
       DB_CONNECTION: mysql
-      DB_HOST: mysql
+      DB_HOST: host.docker.internal
       DB_PORT: 3306
-      DB_DATABASE: financeiro
-      DB_USERNAME: financeiro
-      DB_PASSWORD: financeiro
+      DB_DATABASE: joao_financeiro
+      DB_USERNAME: root
+      DB_PASSWORD: 123456789
       CACHE_STORE: redis
       QUEUE_CONNECTION: redis
       SESSION_DRIVER: file
@@ -68,6 +69,7 @@ services:
       WAHA_BASE_URL: http://waha:3000
       WAHA_API_KEY: local-waha-key
       WAHA_WEBHOOK_SECRET: local-waha-webhook-secret
+      AUTH_JWT_SECRET: local-jwt-secret
     depends_on:
       mysql:
         condition: service_healthy

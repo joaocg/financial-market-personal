@@ -80,6 +80,14 @@ stretch_backlog:
     points: 5
     status: not_started
     note: Mantida fora do compromisso da sprint por capacidade.
+next_scope_candidates:
+  - epic: Operacao WAHA e onboarding conversacional
+    target_sprint: 4
+    total_points: 13
+    story_ids:
+      - STORY-016
+      - STORY-018
+      - STORY-019
 metrics:
   total_stories: 4
   completed_stories: 4
@@ -88,4 +96,4 @@ metrics:
   total_points: 18
   completed_points: 18
   completion_percentage: 100
-last_updated: "2026-04-17T18:02:07Z"
+last_updated: "2026-04-17T18:20:00Z"
