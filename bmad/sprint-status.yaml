@@ -23,7 +23,7 @@ epics:
       - STORY-011
       - STORY-012
     target_sprint: 3
-    progress_percentage: 50
+    progress_percentage: 100
   - name: Frontend Vue inicial
     total_points: 8
     story_ids:
@@ -48,11 +48,12 @@ stories:
     epic: Fluxo guiado WhatsApp
     priority: Must Have
     points: 5
-    status: not_started
+    status: completed
     dependencies:
       - STORY-009
       - STORY-006
     notes: Registrar creditos com conversa guiada e confirmacao antes de persistir.
+    completed_date: "2026-04-17"
   - id: STORY-013
     title: Painel Vue para login e onboarding inicial
     epic: Frontend Vue inicial
@@ -79,10 +80,10 @@ stretch_backlog:
     note: Mantida fora do compromisso da sprint por capacidade.
 metrics:
   total_stories: 4
-  completed_stories: 1
+  completed_stories: 2
   in_progress_stories: 0
   blocked_stories: 0
   total_points: 18
-  completed_points: 5
-  completion_percentage: 25
-last_updated: "2026-04-17T17:43:13Z"
+  completed_points: 10
+  completion_percentage: 50
+last_updated: "2026-04-17T17:48:11Z"
