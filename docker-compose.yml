@@ -27,6 +27,10 @@ services:
       WAHA_API_KEY: local-waha-key
       WAHA_WEBHOOK_SECRET: local-waha-webhook-secret
       AUTH_JWT_SECRET: local-jwt-secret
+      AI_PROVIDER: none
+      AI_API_KEY: null
+      AI_RECEIPT_CONFIDENCE_THRESHOLD: "0.7"
+      AI_RECEIPT_STORAGE_DISK: local
     depends_on:
       mysql:
         condition: service_healthy
@@ -70,6 +74,10 @@ services:
       WAHA_API_KEY: local-waha-key
       WAHA_WEBHOOK_SECRET: local-waha-webhook-secret
       AUTH_JWT_SECRET: local-jwt-secret
+      AI_PROVIDER: none
+      AI_API_KEY: null
+      AI_RECEIPT_CONFIDENCE_THRESHOLD: "0.7"
+      AI_RECEIPT_STORAGE_DISK: local
     depends_on:
       mysql:
         condition: service_healthy
@@ -120,16 +128,20 @@ services:
       WAHA_API_KEY: local-waha-key
       WAHA_DASHBOARD_ENABLED: "true"
       WAHA_DASHBOARD_USERNAME: admin
-      WAHA_DASHBOARD_PASSWORD: admin
+      WAHA_DASHBOARD_PASSWORD: local-waha-admin
       WHATSAPP_SWAGGER_ENABLED: "true"
       WHATSAPP_SWAGGER_USERNAME: admin
-      WHATSAPP_SWAGGER_PASSWORD: admin
+      WHATSAPP_SWAGGER_PASSWORD: local-waha-admin
       WHATSAPP_DEFAULT_ENGINE: WEBJS
       WAHA_NAMESPACE: all
       WAHA_BASE_URL: http://waha:3000
       WAHA_LOG_FORMAT: PRETTY
       WAHA_LOG_LEVEL: info
       WAHA_PRINT_QR: "false"
+      WHATSAPP_HOOK_URL: http://app:8000/api/v1/webhooks/waha
+      WHATSAPP_HOOK_CUSTOM_HEADERS: X-WAHA-Secret:local-waha-webhook-secret
+      WHATSAPP_HOOK_EVENTS: message
+      WHATSAPP_START_SESSION: default
       WAHA_MEDIA_STORAGE: LOCAL
       WHATSAPP_FILES_FOLDER: /app/.media
     ports:

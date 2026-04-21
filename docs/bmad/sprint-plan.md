@@ -1,21 +1,21 @@
-# Sprint Plan: Financeiro Familiar com WhatsApp e Vue
+# Sprint Plan: Financeiro Familiar com WhatsApp - Sprint 4
 
-- **Sprint Number:** 3
-- **Sprint Dates:** 2026-05-18 - 2026-05-29
-- **Sprint Duration:** 2 semanas / 10 dias uteis
-- **Created:** 2026-04-17
+- **Sprint Number:** 4
+- **Sprint Dates:** 2026-04-17 - 2026-04-20
+- **Sprint Duration:** 4 dias corridos
+- **Created:** 2026-04-20
 
 ## Sprint Overview
 
-**Sprint Goal:** entregar os primeiros fluxos guiados de lancamento via WhatsApp e a primeira superficie visual do frontend Vue para acesso e consulta de saldo.
+**Sprint Goal:** operacionalizar o WAHA, fechar o onboarding administrativo no frontend e validar o fluxo ponta a ponta do WhatsApp ate o ledger.
 
 **Sprint Capacity:** 20 story points  
 **Stories Planned:** 4 stories  
 **Total Story Points:** 18 points
 
 **Capacity Calculation:**
-- **Base capacity:** 20 pontos, mantida pela velocidade observada nas 2 primeiras sprints
-- **Adjustments:** sem PTO, feriados ou suporte extra registrados; capacidade preservada em 20 pontos
+- **Base capacity:** 20 pontos, mantendo a referencia observada nas sprints anteriores.
+- **Adjustments:** preservada margem de 2 pontos para setup operacional, verificacoes locais e troubleshooting.
 - **Final capacity:** 20 pontos
 
 ## Velocity Metrics
@@ -23,220 +23,163 @@
 **Historical Velocity:**
 - Sprint 1: 20 pontos
 - Sprint 2: 20 pontos
-- **3-Sprint Average:** nao aplicavel ainda; usar media parcial de 20 pontos como referencia operacional
+- Sprint 3: 18 pontos
+- **Rolling Average:** 19 pontos
 
 **Team Composition:**
 - 1 desenvolvedor principal equivalente
-- 10 dias uteis disponiveis nesta sprint
-- Estimativa de 2 pontos por dev-day como taxa conservadora ja validada
+- execucao concentrada em um ciclo curto de estabilizacao e fechamento do MVP
 
 ## Sprint Backlog
 
-### Epic 1: Fluxo guiado WhatsApp (10 points)
+### Epic 1: Operacao WAHA e onboarding conversacional (13 points)
 
-**Epic Goal:** permitir que membros autorizados lancem despesas e creditos pelo WhatsApp com conversa guiada, confirmacao e persistencia segura.
+**Epic Goal:** tornar o canal WhatsApp utilizavel de ponta a ponta, com configuracao repetivel, contato autorizado configuravel e validacao operacional objetiva.
 
-#### STORY-011: Fluxo guiado de registro de despesa via WhatsApp
+#### STORY-016: Bootstrap operacional do WAHA com credenciais e sessao local
 - **Priority:** Must Have
 - **Points:** 5
-- **Status:** Not Started
-- **Dependencies:** STORY-009, STORY-006
-- **Brief:** guiar o membro autorizado pela coleta e confirmacao de uma despesa antes de persistir o lancamento.
+- **Status:** Completed
+- **Dependencies:** STORY-002, STORY-009
+- **Brief:** consolidar credenciais, sessao local e smoke checks basicos para o ambiente WAHA.
 
-#### STORY-012: Fluxo guiado de registro de credito via WhatsApp
+#### STORY-018: Painel Vue para vincular contato WhatsApp de membros
 - **Priority:** Must Have
 - **Points:** 5
-- **Status:** Not Started
-- **Dependencies:** STORY-009, STORY-006
-- **Brief:** guiar o membro autorizado pela coleta e confirmacao de um credito antes de persistir o lancamento.
+- **Status:** Completed
+- **Dependencies:** STORY-004, STORY-013
+- **Brief:** permitir que o administrador vincule o numero autorizado de cada membro pela interface.
 
----
-
-### Epic 2: Frontend Vue inicial (8 points)
-
-**Epic Goal:** disponibilizar a primeira entrada visual do produto com onboarding e visao de saldo, pronta para evoluir nas proximas sprints.
-
-#### STORY-013: Painel Vue para login e onboarding inicial
-- **Priority:** Must Have
-- **Points:** 5
-- **Status:** Not Started
-- **Dependencies:** Nenhuma
-- **Brief:** criar a primeira tela de entrada do frontend com orientacao simples e responsiva para desktop e mobile.
-
-#### STORY-014: Painel Vue para saldo consolidado e contas
-- **Priority:** Must Have
+#### STORY-019: Smoke test ponta a ponta do fluxo WAHA ate o ledger
+- **Priority:** Should Have
 - **Points:** 3
-- **Status:** Not Started
-- **Dependencies:** STORY-007, STORY-013
-- **Brief:** exibir saldo consolidado e saldo por conta em um painel Vue enxuto e legivel.
+- **Status:** Completed
+- **Dependencies:** STORY-016, STORY-018, STORY-011, STORY-012
+- **Brief:** validar webhook, resolucao do membro, conversa guiada e impacto observavel no saldo.
 
----
+### Epic 2: Frontend administrativo de estrutura financeira (5 points)
+
+**Epic Goal:** remover dependencias de chamadas manuais para a configuracao basica da estrutura financeira.
+
+#### STORY-017: Painel Vue para cadastro de bancos e contas
+- **Priority:** Must Have
+- **Points:** 5
+- **Status:** Completed
+- **Dependencies:** STORY-005, STORY-013
+- **Brief:** criar bancos e contas diretamente pelo frontend autenticado.
+
+## Stretch Backlog
+
+#### STORY-015: Ingestao inicial de imagem para assistencia por IA
+- **Priority:** Should Have
+- **Points:** 8
+- **Status:** Completed
+- **Brief:** entregar pipeline OCR-first com fallback opcional de IA para comprovantes enviados no WhatsApp.
 
 ## Story Prioritization
 
 ### Must Have (Critical Path)
-Stories that must be completed to achieve sprint goal:
-1. `STORY-011` - fluxo guiado de registro de despesa via WhatsApp (5 points)
-2. `STORY-012` - fluxo guiado de registro de credito via WhatsApp (5 points)
-3. `STORY-013` - painel Vue para login e onboarding inicial (5 points)
-4. `STORY-014` - painel Vue para saldo consolidado e contas (3 points)
+1. `STORY-016` - bootstrap operacional do WAHA com credenciais e sessao local (5 points)
+2. `STORY-017` - painel Vue para cadastro de bancos e contas (5 points)
+3. `STORY-018` - painel Vue para vincular contato WhatsApp de membros (5 points)
 
-**Total Must Have:** 18 points
+**Total Must Have:** 15 points
 
 ### Should Have (High Priority)
-Importantes para o produto, mas nao incluidos neste compromisso de sprint:
-1. Nenhuma historia `Should Have` foi incluida no compromisso atual.
+1. `STORY-019` - smoke test ponta a ponta do fluxo WAHA ate o ledger (3 points)
 
-**Total Should Have:** 0 points
+**Total Should Have:** 3 points
 
 ### Could Have (Nice to Have)
-Lower priority stories, may be deferred if needed:
-1. Nenhuma historia `Could Have` foi comprometida nesta sprint.
-
-**Total Could Have:** 0 points
+1. `STORY-015` - ingestao inicial de imagem para assistencia por IA (8 points, entregue como adicional)
 
 ## Implementation Order
 
-Recommended sequence based on dependencies and priorities:
-
-1. **Week 1, Days 1-2:** `STORY-013` - Painel Vue para login e onboarding inicial
-   - Rationale: cria a base visual e de navegacao para o frontend antes da tela de saldo.
-
-2. **Week 1, Days 2-4:** `STORY-011` - Fluxo guiado de registro de despesa via WhatsApp
-   - Rationale: abre o principal fluxo transacional guiado do WhatsApp e valida o padrao de conversacao.
-
-3. **Week 1, Days 4-6:** `STORY-012` - Fluxo guiado de registro de credito via WhatsApp
-   - Rationale: reaproveita a mesma maquina de estados do fluxo de despesa e fecha o par de lancamentos basicos.
-
-4. **Week 2, Days 1-3:** `STORY-014` - Painel Vue para saldo consolidado e contas
-   - Rationale: completa a primeira superficie visual de consulta, ancorada no contrato de saldo ja existente.
+1. `STORY-016` para estabilizar credenciais, sessao e diagnostico local do WAHA.
+2. `STORY-017` para fechar o cadastro administrativo minimo de bancos e contas.
+3. `STORY-018` para conectar o onboarding dos membros ao uso real do canal conversacional.
+4. `STORY-019` para comprovar o fluxo completo entre WhatsApp e ledger.
 
 ## Story Dependencies
 
 ### Dependency Graph
+
 ```text
-STORY-006
-  └─> STORY-011
-  └─> STORY-012
+STORY-002
+  └─> STORY-016
 
 STORY-009
-  └─> STORY-011
-  └─> STORY-012
+  └─> STORY-016
 
-STORY-007
-  └─> STORY-014
+STORY-005
+  └─> STORY-017
 
 STORY-013
-  └─> STORY-014
+  └─> STORY-017
+  └─> STORY-018
+
+STORY-004
+  └─> STORY-018
+
+STORY-016
+  └─> STORY-019
+
+STORY-018
+  └─> STORY-019
+
+STORY-011
+  └─> STORY-019
+
+STORY-012
+  └─> STORY-019
 ```
 
 ### Critical Path Stories
-Stories on the critical path (blocking other work):
-- `STORY-013` - blocks `STORY-014`
-- `STORY-006` - blocks `STORY-011` and `STORY-012`
-- `STORY-009` - blocks `STORY-011` and `STORY-012`
-- `STORY-007` - blocks `STORY-014`
-
-### External Dependencies
-- WAHA local com webhook configuravel e estavel: precisa permanecer operacional para validar `STORY-011` e `STORY-012`
-- Contrato de consulta de saldo do backend: precisa permanecer compativel para alimentar `STORY-014`
-- Stack Vue existente no projeto: precisa estar disponivel para a tela inicial e o painel de saldo
+- `STORY-016` - desbloqueia a validacao operacional do canal WAHA
+- `STORY-018` - desbloqueia a resolucao correta do membro no fluxo conversacional
+- `STORY-019` - fecha a confianca do MVP integrado
 
 ## Risks and Mitigation
 
-### Risk 1: Fluxos guiados no WhatsApp ficarem longos demais e quebrarem a experiencia
+### Risk 1: Sessao WAHA ou credenciais locais falharem de forma opaca
 - **Probability:** Medium
 - **Impact:** High
-- **Mitigation:** manter coleta de dados em passos curtos, com confirmacao final antes da persistencia
-- **Contingency:** reduzir campos opcionais e adiar refinamentos de copy para a sprint seguinte
+- **Mitigation:** concentrar configuracao, mensagens de erro e checks operacionais em um fluxo unico.
 
-### Risk 2: Dependencia entre frontend e backend desacelerar a entrega da primeira tela Vue
+### Risk 2: Frontend administrativo nao refletir contratos do backend
 - **Probability:** Medium
 - **Impact:** Medium
-- **Mitigation:** usar contratos ja existentes e tratar o frontend como superficie de leitura inicial, sem novas integracoes complexas
-- **Contingency:** entregar `STORY-013` e `STORY-014` com dados mockados temporariamente, se necessario
+- **Mitigation:** reutilizar endpoints existentes e validar estados de erro, sucesso e listagem com testes.
 
-### Risk 3: Escopo expandir para IA antes de estabilizar os fluxos basicos
-- **Probability:** Low
+### Risk 3: Fluxo ponta a ponta passar isoladamente por modulo, mas falhar na integracao real
+- **Probability:** Medium
 - **Impact:** High
-- **Mitigation:** manter `STORY-015` fora do compromisso da sprint
-- **Contingency:** replanejar a historia apenas depois de concluir os fluxos de WhatsApp e a primeira base do frontend
+- **Mitigation:** padronizar smoke test com checkpoints claros em webhook, conversa e saldo final.
 
 ## Sprint Milestones
 
-- **Day 2:** `STORY-013` em andamento com base visual e responsividade inicial
-- **Day 4:** `STORY-011` iniciada com coleta guiada e confirmacao definida
-- **Day 6:** `STORY-012` iniciada ou finalizada, reutilizando a mesma maquina de estados
-- **Day 8:** `STORY-014` em validacao com contrato de saldo
-- **Day 10:** Sprint goal concluido com os 4 stories planejados entregues
+- **Milestone 1:** WAHA operacional com setup repetivel e diagnostico basico fechado
+- **Milestone 2:** frontend administrativo cobrindo bancos, contas e contato WhatsApp do membro
+- **Milestone 3:** smoke test ponta a ponta validado com impacto real no ledger
 
 ## Definition of Done
 
-A story e considerada pronta quando:
-- [ ] Todos os acceptance criteria forem atendidos
-- [ ] Codigo revisado e aprovado
-- [ ] Testes relevantes escritos e passando
-- [ ] Contratos e documentacao tecnica atualizados quando necessario
-- [ ] Configuracoes e variaveis de ambiente documentadas
-- [ ] Integracao validada no ambiente local da sprint
-
-## Sprint Ceremonies
-
-### Daily Standups
-- **Duration:** 15 minutos
-- **Format:** ontem, hoje e bloqueios
-
-### Sprint Review
-- **Date:** 2026-05-29
-- **Duration:** 1 hora
-- **Purpose:** demonstrar os fluxos guiados de WhatsApp e a primeira tela Vue funcional
-
-### Sprint Retrospective
-- **Date:** 2026-05-29
-- **Duration:** 1 hora
-- **Purpose:** calibrar o equilibrio entre conversacao, ledger e frontend visual
-
-### Sprint Planning (Next Sprint)
-- **Date:** 2026-05-29 ou proximo dia util
-- **Duration:** 1-2 horas
-- **Purpose:** planejar a proxima extensao do fluxo guiado e a evolucao do frontend
+A sprint e considerada concluida quando:
+- [x] Todas as historias comprometidas foram entregues
+- [x] O canal WAHA pode ser configurado localmente sem conhecimento tacito
+- [x] O frontend cobre a configuracao administrativa minima do MVP
+- [x] O fluxo ponta a ponta foi validado com um roteiro repetivel
+- [x] A documentacao BMAD e operacional foi atualizada
 
 ## Success Criteria
 
-Esta sprint sera considerada bem-sucedida se:
-1. o sistema permitir registrar despesas e creditos por fluxo guiado no WhatsApp;
-2. a primeira tela Vue de login e onboarding estiver funcional e responsiva;
-3. o painel Vue de saldo consolidado e contas consumir o contrato de backend existente;
-4. a sprint concluir com 18 pontos planejados entregues sem ultrapassar capacidade;
-5. o backlog seguinte possa evoluir sem bloqueios estruturais nos contratos basicos.
-
-## Burndown Tracking
-
-Track remaining story points daily or every few days:
-
-| Date | Completed | Remaining | Ideal Remaining | Notes |
-|------|-----------|-----------|-----------------|-------|
-| 2026-05-18 | 0 | 18 | 18 | Sprint begins |
-| 2026-05-20 | 5 | 13 | 14 | Base do frontend ou primeiro fluxo guiado em progresso |
-| 2026-05-23 | 10 | 8 | 10 | Metade do compromisso validada |
-| 2026-05-26 | 15 | 3 | 4 | Apenas o ultimo item de integracao restante |
-| 2026-05-29 | 18 | 0 | 0 | Sprint complete |
-
-## Team Capacity
-
-### Team Members
-- **Developer 1:** capacidade principal da sprint, 10 dev-days disponiveis
-
-**Total Developer-Days:** 10 dias
-
-### Capacity Adjustments
-- **Holidays:** nao registrados
-- **PTO:** nao registrado
-- **Meetings:** absorvidos no fator conservador de 2 pontos por dia
-- **Support/On-call:** nao considerado
+Esta sprint e considerada bem-sucedida se:
+1. o WAHA puder ser inicializado e diagnosticado com passos objetivos;
+2. o administrador conseguir cadastrar bancos, contas e o WhatsApp autorizado do membro pela interface;
+3. o fluxo guiado do WhatsApp puder ser exercitado ate refletir saldo no ledger;
+4. o MVP sair deste ciclo com backlog operacional critico resolvido.
 
 ## Notes
 
-- A Sprint 3 expande o foco do produto para o primeiro fluxo guiado real no WhatsApp e para a primeira superficie visual do frontend Vue.
-- `STORY-015` continua fora do compromisso para evitar dispersao antes da estabilizacao dos fluxos basicos.
-- A capacidade permanece em 20 pontos, mas o compromisso foi mantido em 18 pontos para deixar margem operacional.
+- A `STORY-015` foi entregue como incremento adicional no mesmo periodo, mas permaneceu fora do compromisso principal da sprint.
+- Com a conclusao da Sprint 4, o BMAD nao aponta novas historias pendentes ate `STORY-019`.

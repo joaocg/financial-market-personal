@@ -6,6 +6,9 @@ RUN apt-get update \
         unzip \
         libzip-dev \
         default-mysql-client \
+        tesseract-ocr \
+        tesseract-ocr-eng \
+        tesseract-ocr-por \
     && docker-php-ext-install pdo_mysql pcntl zip \
     && pecl install redis \
     && docker-php-ext-enable redis \

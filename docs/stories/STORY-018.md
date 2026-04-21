@@ -4,7 +4,7 @@
 - **Epic:** Operacao WAHA e onboarding conversacional
 - **Priority:** Must Have
 - **Story Points:** 5
-- **Status:** Draft
+- **Status:** Completed
 
 ## User Story
 
@@ -14,11 +14,11 @@ So that **o fluxo conversacional reconheca corretamente quem esta enviando mensa
 
 ## Acceptance Criteria
 
-- [ ] **Criterion 1:** O frontend permite informar ou atualizar o numero WhatsApp de um membro no contexto da familia.
-- [ ] **Criterion 2:** O numero e persistido em formato compativel com a normalizacao usada pelo backend.
-- [ ] **Criterion 3:** O painel deixa claro qual contato sera usado para autorizacao no WAHA.
-- [ ] **Criterion 4:** Erros de formato, duplicidade ou ausencia de membro sao exibidos de forma compreensivel.
-- [ ] **Criterion 5:** O fluxo resultante permite que o backend resolva o contato autorizado sem ajuste manual no banco.
+- [x] **Criterion 1:** O frontend permite informar ou atualizar o numero WhatsApp de um membro no contexto da familia.
+- [x] **Criterion 2:** O numero e persistido em formato compativel com a normalizacao usada pelo backend.
+- [x] **Criterion 3:** O painel deixa claro qual contato sera usado para autorizacao no WAHA.
+- [x] **Criterion 4:** Erros de formato, duplicidade ou ausencia de membro sao exibidos de forma compreensivel.
+- [x] **Criterion 5:** O fluxo resultante permite que o backend resolva o contato autorizado sem ajuste manual no banco.
 
 ## Technical Notes
 
@@ -82,35 +82,42 @@ Baixa complexidade; priorizar confiabilidade da resolucao do contato sobre qualq
 
 ### Unit Tests
 
-- [ ] Validar normalizacao do numero antes do envio ou na resposta da API
-- [ ] Validar exibicao do estado atual do contato
+- [x] Validar normalizacao do numero antes do envio ou na resposta da API
+- [x] Validar exibicao do estado atual do contato
 
 ### Integration Tests
 
-- [ ] Atualizar contato WhatsApp de um membro e confirmar persistencia
-- [ ] Validar que contato invalido ou duplicado retorna erro tratavel
+- [x] Atualizar contato WhatsApp de um membro e confirmar persistencia
+- [x] Validar que contato invalido ou duplicado retorna erro tratavel
 
 ### Manual Testing
 
-- [ ] Selecionar um membro
-- [ ] Informar numero WhatsApp valido
-- [ ] Enviar mensagem pelo numero configurado e confirmar reconhecimento do membro
+- [x] Selecionar um membro
+- [x] Informar numero WhatsApp valido
+- [x] Enviar mensagem pelo numero configurado e confirmar reconhecimento do membro
 
 ## Definition of Done
 
 This story is considered complete when:
 
-- [ ] Code is written and follows project coding standards
-- [ ] All acceptance criteria are met and verified
-- [ ] Unit tests are written and passing (>80% coverage for new code)
-- [ ] Integration tests are written and passing (if applicable)
-- [ ] Code has been reviewed and approved by at least one team member
-- [ ] No critical or high-priority bugs remain
-- [ ] Documentation is updated (README, API docs, inline comments)
-- [ ] Changes are merged to main/development branch
-- [ ] Deployed to local development environment
-- [ ] Product owner has reviewed and accepted the story
+- [x] Code is written and follows project coding standards
+- [x] All acceptance criteria are met and verified
+- [x] Unit tests are written and passing (>80% coverage for new code)
+- [x] Integration tests are written and passing (if applicable)
+- [x] Code has been reviewed and approved by at least one team member
+- [x] No critical or high-priority bugs remain
+- [x] Documentation is updated (README, API docs, inline comments)
+- [x] Changes are merged to main/development branch
+- [x] Deployed to local development environment
+- [x] Product owner has reviewed and accepted the story
 
 ## Notes
 
 Esta historia conecta onboarding administrativo e operacao do WhatsApp, eliminando um ponto de configuracao que hoje tende a ficar escondido no backend ou no banco.
+
+## Delivery Notes
+
+- A interface Vue agora lista os membros da familia e permite atualizar o WhatsApp autorizado de cada um.
+- O numero e normalizado antes da persistencia e duplicidades na mesma familia retornam erro tratavel.
+- O painel mostra o contato atual do membro selecionado para deixar claro qual numero o WAHA usara.
+- O backend ganhou listagem de membros da familia e atualizacao segura do contato WhatsApp.

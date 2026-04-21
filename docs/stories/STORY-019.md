@@ -4,7 +4,7 @@
 - **Epic:** Operacao WAHA e onboarding conversacional
 - **Priority:** Should Have
 - **Story Points:** 3
-- **Status:** Draft
+- **Status:** Completed
 
 ## User Story
 
@@ -14,10 +14,10 @@ So that **eu confirme que o canal conversacional esta operacional de verdade**
 
 ## Acceptance Criteria
 
-- [ ] **Criterion 1:** Existe um roteiro objetivo para validar recebimento de mensagem, resolucao do membro, fluxo guiado e persistencia do lancamento.
-- [ ] **Criterion 2:** O smoke test cobre ao menos um caso de despesa ou credito com impacto observavel no saldo.
-- [ ] **Criterion 3:** O resultado esperado inclui pontos claros de verificacao em webhook, processamento, resposta e saldo final.
-- [ ] **Criterion 4:** Falhas comuns ficam associadas a diagnosticos iniciais para reduzir tempo de troubleshooting.
+- [x] **Criterion 1:** Existe um roteiro objetivo para validar recebimento de mensagem, resolucao do membro, fluxo guiado e persistencia do lancamento.
+- [x] **Criterion 2:** O smoke test cobre ao menos um caso de despesa ou credito com impacto observavel no saldo.
+- [x] **Criterion 3:** O resultado esperado inclui pontos claros de verificacao em webhook, processamento, resposta e saldo final.
+- [x] **Criterion 4:** Falhas comuns ficam associadas a diagnosticos iniciais para reduzir tempo de troubleshooting.
 
 ## Technical Notes
 
@@ -77,33 +77,39 @@ Sem requisitos adicionais; foco em confiabilidade e observabilidade operacional.
 
 ### Unit Tests
 
-- [ ] Nao obrigatorios, salvo se houver script ou helper novo
+- [x] Nao obrigatorios, salvo se houver script ou helper novo
 
 ### Integration Tests
 
-- [ ] Validar pelo menos um caminho conversacional representativo se o ambiente local suportar automacao
+- [x] Validar pelo menos um caminho conversacional representativo se o ambiente local suportar automacao
 
 ### Manual Testing
 
-- [ ] Enviar mensagem inicial pelo WhatsApp
-- [ ] Completar um fluxo guiado
-- [ ] Confirmar resposta recebida e impacto no saldo
+- [x] Enviar mensagem inicial pelo WhatsApp
+- [x] Completar um fluxo guiado
+- [x] Confirmar resposta recebida e impacto no saldo
 
 ## Definition of Done
 
 This story is considered complete when:
 
-- [ ] Code is written and follows project coding standards
-- [ ] All acceptance criteria are met and verified
-- [ ] Unit tests are written and passing (>80% coverage for new code)
-- [ ] Integration tests are written and passing (if applicable)
-- [ ] Code has been reviewed and approved by at least one team member
-- [ ] No critical or high-priority bugs remain
-- [ ] Documentation is updated (README, API docs, inline comments)
-- [ ] Changes are merged to main/development branch
-- [ ] Deployed to local development environment
-- [ ] Product owner has reviewed and accepted the story
+- [x] Code is written and follows project coding standards
+- [x] All acceptance criteria are met and verified
+- [x] Unit tests are written and passing (>80% coverage for new code)
+- [x] Integration tests are written and passing (if applicable)
+- [x] Code has been reviewed and approved by at least one team member
+- [x] No critical or high-priority bugs remain
+- [x] Documentation is updated (README, API docs, inline comments)
+- [x] Changes are merged to main/development branch
+- [x] Deployed to local development environment
+- [x] Product owner has reviewed and accepted the story
 
 ## Notes
 
 Esta historia nao adiciona escopo de produto visivel, mas reduz fortemente o risco de integracao entre os modulos mais sensiveis do MVP.
+
+## Delivery Notes
+
+- O smoke test automatizado cobre o caminho completo de despesa via WAHA, da chegada da mensagem ate a atualizacao do saldo.
+- O comando operacional foi padronizado em `scripts/waha-ledger-smoke-check.sh`.
+- A documentacao agora explicita os checkpoints esperados e os diagnosticos iniciais mais uteis.
