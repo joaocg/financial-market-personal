@@ -36,6 +36,16 @@ services:
       OLLAMA_TIMEOUT: "60"
       OLLAMA_VISION_ENABLED: "true"
       WHATSAPP_AI_ASSISTANT_ENABLED: "false"
+      WHATSAPP_AI_ASSISTANT_MINIMUM_CONFIDENCE: "0.78"
+      WHATSAPP_AUDIO_TRANSCRIPTION_ENABLED: "false"
+      WHATSAPP_AUDIO_TRANSCRIPTION_PROVIDER: "none"
+      WHATSAPP_AUDIO_TRANSCRIPTION_COMMAND: ""
+      WHATSAPP_AUDIO_TRANSCRIPTION_BASE_URL: http://host.docker.internal:8001
+      WHATSAPP_AUDIO_TRANSCRIPTION_ENDPOINT: /v1/audio/transcriptions
+      WHATSAPP_AUDIO_TRANSCRIPTION_MODEL: whisper-1
+      WHATSAPP_AUDIO_TRANSCRIPTION_LANGUAGE: pt
+      WHATSAPP_AUDIO_TRANSCRIPTION_TIMEOUT: "120"
+      WHATSAPP_AUDIO_TRANSCRIPTION_API_KEY: ""
     depends_on:
       mysql:
         condition: service_healthy
@@ -88,6 +98,16 @@ services:
       OLLAMA_TIMEOUT: "60"
       OLLAMA_VISION_ENABLED: "true"
       WHATSAPP_AI_ASSISTANT_ENABLED: "false"
+      WHATSAPP_AI_ASSISTANT_MINIMUM_CONFIDENCE: "0.78"
+      WHATSAPP_AUDIO_TRANSCRIPTION_ENABLED: "false"
+      WHATSAPP_AUDIO_TRANSCRIPTION_PROVIDER: "none"
+      WHATSAPP_AUDIO_TRANSCRIPTION_COMMAND: ""
+      WHATSAPP_AUDIO_TRANSCRIPTION_BASE_URL: http://host.docker.internal:8001
+      WHATSAPP_AUDIO_TRANSCRIPTION_ENDPOINT: /v1/audio/transcriptions
+      WHATSAPP_AUDIO_TRANSCRIPTION_MODEL: whisper-1
+      WHATSAPP_AUDIO_TRANSCRIPTION_LANGUAGE: pt
+      WHATSAPP_AUDIO_TRANSCRIPTION_TIMEOUT: "120"
+      WHATSAPP_AUDIO_TRANSCRIPTION_API_KEY: ""
     depends_on:
       mysql:
         condition: service_healthy
@@ -165,6 +185,24 @@ services:
       timeout: 5s
       retries: 10
       start_period: 40s
+
+  audio-transcriber:
+    profiles: ["audio"]
+    build:
+      context: .
+      dockerfile: docker/audio-transcriber/Dockerfile
+    environment:
+      WHISPER_MODEL_SIZE: small
+      WHISPER_DEVICE: cpu
+      WHISPER_COMPUTE_TYPE: int8
+    ports:
+      - "8001:8001"
+    healthcheck:
+      test: ["CMD-SHELL", "python -c \"import urllib.request; urllib.request.urlopen('http://127.0.0.1:8001/up')\""]
+      interval: 20s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
 
 volumes:
   composer_vendor:
