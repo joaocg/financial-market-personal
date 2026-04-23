@@ -27,10 +27,14 @@ services:
       WAHA_API_KEY: local-waha-key
       WAHA_WEBHOOK_SECRET: local-waha-webhook-secret
       AUTH_JWT_SECRET: local-jwt-secret
-      AI_PROVIDER: none
+      AI_PROVIDER: ollama
       AI_API_KEY: null
       AI_RECEIPT_CONFIDENCE_THRESHOLD: "0.7"
       AI_RECEIPT_STORAGE_DISK: local
+      OLLAMA_BASE_URL: http://host.docker.internal:11434
+      OLLAMA_MODEL: gemma4:e4b
+      OLLAMA_TIMEOUT: "60"
+      OLLAMA_VISION_ENABLED: "true"
     depends_on:
       mysql:
         condition: service_healthy
@@ -74,10 +78,14 @@ services:
       WAHA_API_KEY: local-waha-key
       WAHA_WEBHOOK_SECRET: local-waha-webhook-secret
       AUTH_JWT_SECRET: local-jwt-secret
-      AI_PROVIDER: none
+      AI_PROVIDER: ollama
       AI_API_KEY: null
       AI_RECEIPT_CONFIDENCE_THRESHOLD: "0.7"
       AI_RECEIPT_STORAGE_DISK: local
+      OLLAMA_BASE_URL: http://host.docker.internal:11434
+      OLLAMA_MODEL: gemma4:e4b
+      OLLAMA_TIMEOUT: "60"
+      OLLAMA_VISION_ENABLED: "true"
     depends_on:
       mysql:
         condition: service_healthy
