@@ -3,6 +3,11 @@
 	url = https://github.com/joaocg/financial-market-personal-back.git
 	branch = main
 
+[submodule "mobile"]
+	path = mobile
+	url = https://github.com/joaocg/financial-market-personal-mobile.git
+	branch = main
+
 [submodule "waha"]
 	path = waha
 	url = https://github.com/devlikeapro/waha.git

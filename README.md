@@ -6,16 +6,16 @@ Personal workspace for financial market experiments and supporting applications.
 
 - `laravel/`: Laravel backend kept as a Git submodule from `https://github.com/joaocg/financial-market-personal-back.git`.
 - `waha/`: WAHA service kept as a Git submodule.
-- `mobile/`: Flutter mobile application.
+- `mobile/`: Flutter mobile application kept as a Git submodule from `https://github.com/joaocg/financial-market-personal-mobile.git`.
 - `docker/`: Local Docker services used by the workspace.
 - `specs/`: Feature specifications and implementation planning artifacts.
 - `docs/`: Project documentation and BMAD artifacts.
 
 ## Git Structure
 
-This repository is organized as a workspace. The Laravel backend and WAHA service
-are referenced through submodules, while project-owned workspace files and the
-Flutter app live directly in this repository.
+This repository is organized as a workspace. The Laravel backend, Flutter mobile
+app, and WAHA service are referenced through submodules, while project-owned
+workspace files live directly in this repository.
 
 After cloning, initialize submodules with:
 
