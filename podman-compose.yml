@@ -5,7 +5,7 @@ services:
       dockerfile: docker/php/Dockerfile
     working_dir: /var/www/html
     env_file:
-      - ./laravel/.env
+      - ./.env
     environment:
       REDIS_HOST: redis
       MARKET_GEOCODER_FALLBACK_BASE_URL: http://market-geocoder:8010
@@ -32,7 +32,7 @@ services:
       dockerfile: docker/php/Dockerfile
     working_dir: /var/www/html
     env_file:
-      - ./laravel/.env
+      - ./.env
     environment:
       REDIS_HOST: redis
       MARKET_GEOCODER_FALLBACK_BASE_URL: http://market-geocoder:8010
@@ -51,7 +51,7 @@ services:
       dockerfile: docker/php/Dockerfile
     working_dir: /var/www/html
     env_file:
-      - ./laravel/.env
+      - ./.env
     environment:
       REDIS_HOST: redis
       MARKET_GEOCODER_FALLBACK_BASE_URL: http://market-geocoder:8010
@@ -81,7 +81,7 @@ services:
       context: .
       dockerfile: docker/market-geocoder/Dockerfile
     env_file:
-      - ./laravel/.env
+      - ./.env
     environment:
       MARKET_GEOCODER_USER_AGENT: FinanceiroMarket/1.0
       MARKET_GEOCODER_NOMINATIM_TIMEOUT: "15"
