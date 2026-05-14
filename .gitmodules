@@ -1,3 +1,8 @@
+[submodule "laravel"]
+	path = laravel
+	url = https://github.com/joaocg/financial-market-personal-back.git
+	branch = main
+
 [submodule "waha"]
 	path = waha
 	url = https://github.com/devlikeapro/waha.git
