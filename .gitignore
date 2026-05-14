@@ -1,7 +1,3 @@
-/AI-HARNESS.md
-/CLAUDE.md
-/CODEX.md
-/GEMINI.md
 /tasks/prompt-155782.md
 /docs/Regras operacionais.md
 /docs/regras-operacionais-projeto.md
@@ -9,4 +5,63 @@
 /tasks/155782/task-content.md
 /tasks/155782/ApresentaçãodeDocumentaçãoderecrédito-BKO-20260424_153300-GravaçãodeReunião.mp4
 /tasks
-/docs
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Environment and local config
+.env
+.env.*
+!.env.example
+local.properties
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# Node and frontend builds
+node_modules/
+dist/
+build/
+.next/
+.nuxt/
+coverage/
+
+# PHP/Laravel
+vendor/
+.phpunit.result.cache
+storage/logs/*.log
+bootstrap/cache/*.php
+public/build/
+
+# Flutter/Dart
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+*.iml
+
+# Mobile generated files
+mobile/build/
+mobile/android/.gradle/
+mobile/android/local.properties
+mobile/android/app/src/main/java/
+mobile/ios/Flutter/Generated.xcconfig
+mobile/ios/Flutter/flutter_export_environment.sh
+mobile/ios/Flutter/ephemeral/
+mobile/ios/Runner/GeneratedPluginRegistrant.*
+mobile/linux/flutter/ephemeral/
+mobile/macos/Flutter/ephemeral/
+mobile/windows/flutter/ephemeral/
