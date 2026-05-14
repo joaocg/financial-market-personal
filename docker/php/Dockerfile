@@ -20,5 +20,6 @@ WORKDIR /var/www/html
 
 COPY docker/php/start-app.sh /usr/local/bin/start-app
 COPY docker/php/start-worker.sh /usr/local/bin/start-worker
+COPY docker/php/start-scheduler.sh /usr/local/bin/start-scheduler
 
-RUN chmod +x /usr/local/bin/start-app /usr/local/bin/start-worker
+RUN chmod +x /usr/local/bin/start-app /usr/local/bin/start-worker /usr/local/bin/start-scheduler
